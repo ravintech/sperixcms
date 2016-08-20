@@ -7,7 +7,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header" style="background-color: #7a1e21;">
-				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-comment"></span> Featured News</center></h3>
+				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-comment"></span> News/Happenings</center></h3>
 			</div>
 			<div class="modal-body">
 				<div class="row" style="margin: 15px;" id="bannerRes"></div>
