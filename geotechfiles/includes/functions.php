@@ -70,6 +70,7 @@ function genrss(){
 
 //search result
 function loadSearchResult2(){
+	$theme=$this->getTheme();
 	if(isset($_POST['search'])){
 		$search=$this->sanitize($_POST['search']);
 		$query="select * from news where title like '%$search%' or message like '%search%' and status=1";
@@ -77,14 +78,14 @@ function loadSearchResult2(){
 		while($row=mysql_fetch_array($result)){
 			echo "<div class='row well' style='margin: 15px;border-radius: 25px;-webkit-border-radius: 25px; -moz-border-radius: 25px;'>
 					<div class='row' style='margin: 15px;'>
-					<h4 style='font-size: 20px; color: #7a1e21; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
+					<h4 style='font-size: 20px; color: ".$theme[2]."; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
 					</div>
 					<div class='row' style='margin: 15px;'>
 						<div class='col-md-4'>
 						<p><img src='../../banners/".$row['image']."' class='img-circle' style='width: 100px; height: 100px;'/></p>
 						</div>
 						<div class='col-md-8'>
-						<p>".substr($row['message'], 0, 250)."..<a href='../../?news&id=".$row['id']."' target='_blank' class='btn btn-xs btn-primary' style='background-color: #7a1e21; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
+						<p>".substr($row['message'], 0, 250)."..<a href='../../?news&id=".$row['id']."' target='_blank' class='btn btn-xs btn-primary' style='background-color: ".$theme[2]."; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
 						</div>
 					</div>
 				</div>";
@@ -94,14 +95,14 @@ function loadSearchResult2(){
 		while($row=mysql_fetch_array($result)){
 			echo "<div class='row well' style='margin: 15px;border-radius: 25px;-webkit-border-radius: 25px; -moz-border-radius: 25px;'>
 					<div class='row' style='margin: 15px;'>
-					<h4 style='font-size: 20px; color: #7a1e21; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
+					<h4 style='font-size: 20px; ".$theme[2]."; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
 					</div>
 					<div class='row' style='margin: 15px;'>
 						<div class='col-md-4'>
 						<p><img src='../../banners/".$row['image']."' class='img-circle' style='width: 100px; height: 100px;'/></p>
 						</div>
 						<div class='col-md-8'>
-						<p>".substr($row['message'], 0, 250)."..<a href='../../?articles&id=".$row['id']."' target='_blank' class='btn btn-xs btn-primary' style='background-color: #7a1e21; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
+						<p>".substr($row['message'], 0, 250)."..<a href='../../?articles&id=".$row['id']."' target='_blank' class='btn btn-xs btn-primary' style='background-color: ".$theme[2]."; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
 						</div>
 					</div>
 				</div>";
@@ -112,14 +113,14 @@ function loadSearchResult2(){
 		while($row=mysql_fetch_array($result)){
 			echo "<div class='row well' style='margin: 15px;border-radius: 25px;-webkit-border-radius: 25px; -moz-border-radius: 25px;'>
 					<div class='row' style='margin: 15px;'>
-					<h4 style='font-size: 20px; color: #7a1e21; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
+					<h4 style='font-size: 20px; color: ".$theme[2]."; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
 					</div>
 					<div class='row' style='margin: 15px;'>
 						<div class='col-md-4'>
 						<p><img src='../../banners/".$row['image']."' class='img-circle' style='width: 100px; height: 100px;'/></p>
 						</div>
 						<div class='col-md-8'>
-						<p>".substr($row['message'], 0, 250)."..<a href='../../?news&id=".$row['id']."' target='_blank' class='btn btn-xs btn-primary' style='background-color: #7a1e21; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
+						<p>".substr($row['message'], 0, 250)."..<a href='../../?news&id=".$row['id']."' target='_blank' class='btn btn-xs btn-primary' style='background-color: ".$theme[2]."; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
 						</div>
 					</div>
 				</div>";
@@ -129,14 +130,14 @@ function loadSearchResult2(){
 		while($row=mysql_fetch_array($result)){
 			echo "<div class='row well' style='margin: 15px;border-radius: 25px;-webkit-border-radius: 25px; -moz-border-radius: 25px;'>
 					<div class='row' style='margin: 15px;'>
-					<h4 style='font-size: 20px; color: #7a1e21; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
+					<h4 style='font-size: 20px; color: ".$theme[2]."; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
 					</div>
 					<div class='row' style='margin: 15px;'>
 						<div class='col-md-4'>
 						<p><img src='../../banners/".$row['image']."' class='img-circle' style='width: 100px; height: 100px;'/></p>
 						</div>
 						<div class='col-md-8'>
-						<p>".substr($row['message'], 0, 250)."..<a href='../../?articles&id=".$row['id']."' target='_blank' class='btn btn-xs btn-primary' style='background-color: #7a1e21; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
+						<p>".substr($row['message'], 0, 250)."..<a href='../../?articles&id=".$row['id']."' target='_blank' class='btn btn-xs btn-primary' style='background-color: ".$theme[2]."; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
 						</div>
 					</div>
 				</div>";
@@ -144,6 +145,7 @@ function loadSearchResult2(){
 	}
 }
 function loadSearchResult(){
+	$theme=$this->getTheme();
 	if(isset($_POST['search'])){
 		$search=$this->sanitize($_POST['search']);
 		$query="select * from news where title like '%$search%' or message like '%search%' and status=1";
@@ -151,14 +153,14 @@ function loadSearchResult(){
 		while($row=mysql_fetch_array($result)){
 			echo "<div class='row well' style='margin: 15px;border-radius: 25px;-webkit-border-radius: 25px; -moz-border-radius: 25px;'>
 					<div class='row' style='margin: 15px;'>
-					<h4 style='font-size: 20px; color: #7a1e21; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
+					<h4 style='font-size: 20px; color:".$theme[2]."; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
 					</div>
 					<div class='row' style='margin: 15px;'>
 						<div class='col-md-4'>
 						<p><img src='banners/".$row['image']."' class='img-circle' style='width: 100px; height: 100px;'/></p>
 						</div>
 						<div class='col-md-8'>
-						<p>".substr($row['message'], 0, 250)."..<a href='?news&id=".$row['id']."' class='btn btn-xs btn-primary' style='background-color: #7a1e21; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
+						<p>".substr($row['message'], 0, 250)."..<a href='?news&id=".$row['id']."' class='btn btn-xs btn-primary' style='background-color:".$theme[2]."; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
 						</div>
 					</div>
 				</div>";
@@ -168,14 +170,14 @@ function loadSearchResult(){
 		while($row=mysql_fetch_array($result)){
 			echo "<div class='row well' style='margin: 15px;border-radius: 25px;-webkit-border-radius: 25px; -moz-border-radius: 25px;'>
 					<div class='row' style='margin: 15px;'>
-					<h4 style='font-size: 20px; color: #7a1e21; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
+					<h4 style='font-size: 20px; color: ".$theme[2]."; font-weight: bold; text-decoration: underline'>".ucwords(strtolower($row['title']))."</h4>
 					</div>
 					<div class='row' style='margin: 15px;'>
 						<div class='col-md-4'>
 						<p><img src='banners/".$row['image']."' class='img-circle' style='width: 100px; height: 100px;'/></p>
 						</div>
 						<div class='col-md-8'>
-						<p>".substr($row['message'], 0, 250)."..<a href='?articles&id=".$row['id']."' class='btn btn-xs btn-primary' style='background-color: #7a1e21; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
+						<p>".substr($row['message'], 0, 250)."..<a href='?articles&id=".$row['id']."' class='btn btn-xs btn-primary' style='background-color: ".$theme[2]."; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;'>Read more...</a></p>
 						</div>
 					</div>
 				</div>";
@@ -353,6 +355,7 @@ function toggleMenu($id,$category){
 function genMenuAdmin(){
 	$query="select * from menu";
 	$result=mysql_query($query);
+	$theme=$this->getTheme();
 	$data="<div class='panel-group well' id='accordion' style='border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px;'>";
 	while($row=mysql_fetch_array($result)){
 		if($row['status']==1){
@@ -403,7 +406,7 @@ function genMenuAdmin(){
 					if($row1['mydef']==1){
 						$disabled1="disabled";
 					}
-					$data1.="<div class='row' style='margin: 5px;border: 1px dashed #7a1e21; padding: 5px;'>
+					$data1.="<div class='row' style='margin: 5px;border: 1px dashed ".$theme[2]."; padding: 5px;'>
 					<div class='col-md-10'>
 						<a data-toggle='collapse' data-parent='#accordion' href='#collapse".$row['id']."' style='font-weight: bold;'><span class='glyphicon glyphicon-".$row1['glyphicon']."'></span> ".ucwords(strtolower($row1['title']))."</a>
 					</div>
@@ -439,6 +442,7 @@ function genMenu(){
 	$query="select * from menu where status=1 order by id";
 	$result=mysql_query($query);
 	$data=null;
+	$theme=$this->getTheme();
 	while($row=mysql_fetch_array($result)){
 		$id=$this->sanitize($row['id']);
 		$homeid=explode("?",$row['link']);
@@ -448,20 +452,20 @@ function genMenu(){
 		if($num >=1){
 			//sub menu exists
 			$data.= "<li class='dropdown'>
-                <a href='#' style='font-weight: bold; color: #7a1e21;' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'><span class='glyphicon glyphicon-".$row['glyphicon']."'></span> ".strtoupper($row['title'])."<span class='caret'></span></a>
+                <a href='#' style='font-weight: bold; color: ".$theme[5].";' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'><span class='glyphicon glyphicon-".$row['glyphicon']."'></span> ".strtoupper($row['title'])."<span class='caret'></span></a>
                 <ul class='dropdown-menu'>";
                 $query1="select * from submenu where parent=$id and status=1";
                 $result1=mysql_query($query1);
                 $data1=null;
                 while($row1=mysql_fetch_array($result1)){
-                	$data1.= " <li><a href='".$row1['link']."' style='color: #7a1e21;' class='tooltip-bottom' title='".ucfirst(strtolower($row1['title']))."'><span class='glyphicon glyphicon-".$row1['glyphicon']."'></span> ".ucwords(strtolower($row1['title']))."</a></li>";
+                	$data1.= " <li><a href='".$row1['link']."' style='color: ".$theme[5].";' class='tooltip-bottom' title='".ucfirst(strtolower($row1['title']))."'><span class='glyphicon glyphicon-".$row1['glyphicon']."'></span> ".ucwords(strtolower($row1['title']))."</a></li>";
                 }
              $data.=$data1;
             $data.= "</ul></li>";
 		}else{
 			
 			//sub menu does not exist
-			$data.= "<li><a href='".$row['link']."' style='color: #7a1e21; font-weight: bold;' class='tooltip-bottom' title='".ucwords(strtolower($row['title']))."'><span class='glyphicon glyphicon-".$row['glyphicon']."'></span> ".strtoupper($row['title'])."</a></li>";
+			$data.= "<li><a href='".$row['link']."' style='color: ".$theme[5]."; font-weight: bold;' class='tooltip-bottom' title='".ucwords(strtolower($row['title']))."'><span class='glyphicon glyphicon-".$row['glyphicon']."'></span> ".strtoupper($row['title'])."</a></li>";
 		}
 	}
 	echo $data;
@@ -4178,12 +4182,13 @@ function getLastLogin($username){
 }
 
 function loadAnnouncements(){
+	$theme=$this->getTheme();
 	$query="select * from announcements where status=1";
 	$result=mysql_query($query);
 	$data=null;
 	while($row=mysql_fetch_array($result)){
 	$data.="<div class='row'>";
-	$data.="<p style='border: 1px dashed #7a1e21; padding: 5px;'>";
+	$data.="<p style='border: 1px dashed ".$theme[2]."; padding: 5px;'>";
 	$data.="<b>".$row['title']."</b><br/>";
 	$data.=$row['message']."<br/>";
 	$data.="</p>";
@@ -4322,6 +4327,8 @@ function loadContentAdmin(){
 		include "menu.php";
 	}elseif(isset($_GET['articles'])){
 		include "articles.php";
+	}elseif(isset($_GET['configuration'])){
+		include "configuration.php";
 	}else{
 		include "dashboard.php";
 	}
@@ -4352,21 +4359,23 @@ function genAygecRegMembers(){
 }
 
 function getNewsLinks(){
+	$theme=$this->getTheme();
 	$query="select * from news where status=1 order by date desc";
 	$result=mysql_query($query);
 	while ($row=mysql_fetch_array($result)) {
-		echo "<div class='row' style='padding: 5px; border: 1px dashed #7a1e21;'>";
+		echo "<div class='row' style='padding: 5px; border: 1px dashed ".$theme[2].";'>";
 		echo "<a href='?news&info=".$row['id']."' style='color: #000;' class='tooltip-bottom link' title='".$row['title']."'>".ucfirst($row['title'])."</a>";
 		echo "</div>";
 	}
 }
 
 function getNewsLinks2(){
+	$theme=$this->getTheme();
 	$query="select * from news where status=1 order by date desc";
 	$result=mysql_query($query);
 	$data=null;
 	while ($row=mysql_fetch_array($result)) {
-		$data.="<div class=\'row\' style=\'padding: 5px; border: 1px dashed #7a1e21;\'>";
+		$data.="<div class=\'row\' style=\'padding: 5px; border: 1px dashed ".$theme[2].";\'>";
 		$data.="<a href=\'?news&info=".$row['id']."\' style=\'color: #000;\' class=\'tooltip-bottom link\' title=\'".$row['title']."\'>".ucfirst($row['title'])."</a>";
 		$data.= "</div>";
 	}
@@ -4466,15 +4475,16 @@ function loadMembershipType(){
 
 
 function loadSpotlight(){
+	$theme=$this->getTheme();
 	$query="select * from spotlight where status=1";
 	$result=mysql_query($query);
 	while ($row=mysql_fetch_array($result)) {
 		if($row['image']!=null){ 
 		echo "<center><p><img src='banners/".$row['image']."' style='width: 70px; height: 70px'/></p></center>";
 		}
-		echo "<p style='font-weight: 100; border: 1px dashed #7a1e21; color: #909057; font-weight: bold;' class='row well'>".$row['message']."</p>";
+		echo "<p style='font-weight: 100; border: 1px dashed ".$theme[2]."; color: #909057; font-weight: bold;' class='row well'>".$row['message']."</p>";
 		if($row['link']!=null){
-		echo "<p><center><a href='".$row['link']."' class='btn btn-xs btn-success blink' style='background-color: #ca9a1c; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; border: 1px solid #7a1e21; font-weight: bold;'><span class='glyphicon glyphicon-pecil'></span> ".$row['linkMsg']."</a></center></p>";
+		echo "<p><center><a href='".$row['link']."' class='btn btn-xs btn-success blink' style='background-color: #ca9a1c; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; border: 1px solid ".$theme[2]."; font-weight: bold;'><span class='glyphicon glyphicon-pecil'></span> ".$row['linkMsg']."</a></center></p>";
 		}
 	}
 }
@@ -4552,12 +4562,13 @@ function loadBriefContentList(){
 }
 
 function loadBriefContent(){
+	$theme=$this->getTheme();
 	$query="select * from briefcontent where status=1";
 	$result=mysql_query($query);
 	$data="<h4 style='font-weight: bold;'><center>";
 	while($row=mysql_fetch_array($result)){
 		$data.="<img src='banners/".$row['image']."' style='width: 70px; height: 70px;'/> ".ucwords($row['title'])."</center></h4>";
-		$data.="<p>".$row['message']."...<a href='".$row['link']."' class='btn btn-xs btn-success' style='background-color: #7a1e21; color: #ff; border-radius: 30px; -webkit-border-radius: 30px; -moz-border-radius: 30px;'>Read more..<span class='glyphicon glyphicon-forward'></span></a><p>";
+		$data.="<p>".$row['message']."...<a href='".$row['link']."' class='btn btn-xs btn-success' style='background-color: ".$theme[2]."; color: #ff; border-radius: 30px; -webkit-border-radius: 30px; -moz-border-radius: 30px;'>Read more..<span class='glyphicon glyphicon-forward'></span></a><p>";
 	}
 	echo $data;
 }
@@ -4721,12 +4732,6 @@ function loadBanner(){
 			echo "<div class='item'>";
 		}
 		echo "<a href='".$row['link']."' class='first-slide'><img class='first-slide tooltip-bottom' title='".$row['info']."' src='banners/".$row['imgname']."' alt='Slider' style='width: 100%; height: 100%;'></a>";
-		/*echo "<div class='container'>";
-		echo "<div class='carousel-caption'>";
-		echo "<h1></h1>";
-		echo "<p></p>";*/
-	/*	echo "<p><a class='btn btn-lg btn-primary' style='background-color: #7a1e21; border: 1px solid #ca9a1c;' href='".$row['link']."' role='button'>".$row['info']."</a></p>";*/
-		//echo "</div></div>";
 		echo "</div>";
 		$count++;
 	}
@@ -4734,12 +4739,13 @@ function loadBanner(){
 }
 
 function loadCalendar(){
+	$theme=$this->getTheme();
 	$query="select * from calendar where status=1";
 	$result=mysql_query($query);
 	$data=null;
 	while($row=mysql_fetch_array($result)){
 	$data.="<div class='row'>";
-	$data.="<a href='".$row['link']."' style='text-decoration: none;color: #000;'><p style='border: 1px dashed #7a1e21; padding: 5px;'>";
+	$data.="<a href='".$row['link']."' style='text-decoration: none;color: #000;'><p style='border: 1px dashed ".$theme[2]."; padding: 5px;'>";
 	$data.="<span class='glyphicon glyphicon-envelope'></span> <b>".$row['title']."</b><br/><span class='glyphicon glyphicon-time'></span> ";
 	$data.=$row['date']."<br/>";
 	$data.="</p></a>";
@@ -4921,6 +4927,25 @@ function getTheme(){
 	$result=mysql_query($query);
 	$result=mysql_fetch_row($result);
 	return $result;
+}
+
+function genThemeList(){
+	$query="select * from theme order by status desc";
+	$result=mysql_query($query);
+	while($row=mysql_fetch_array($result)){
+		if($row['status']==1){
+			$status="selected";
+		}else{
+			$status="";
+		}
+		echo "<option value='".$row['id']."' ".$status.">".$row['name']."</option>";
+	}
+}
+
+//updating configuration data
+function updateConfigurationData(){
+	//post parameters
+	
 }
 //#########################################################..ADMIN....
 

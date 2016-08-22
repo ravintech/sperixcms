@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.30, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: geotech
+-- Host: localhost    Database: sperixcms
 -- ------------------------------------------------------
 -- Server version	5.6.30-1
 
@@ -16,12 +16,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `geotech`
+-- Current Database: `sperixcms`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `geotech` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `sperixcms` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
-USE `geotech`;
+USE `sperixcms`;
 
 --
 -- Table structure for table `about`
@@ -71,7 +71,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES ('Justice Owusu Agyemang','jayluxferro','91b507ee40d10b82518e0683969dbe60','justiceowusuagyemang@gmail.com','0501371810'),('Dr Frederick Owusu-Nimo','admin','21232f297a57a5a743894a0e4a801fc3','frednimo@gmail.com','0543333174');
+INSERT INTO `admin` VALUES ('Justice Owusu Agyemang','jayluxferro','91b507ee40d10b82518e0683969dbe60','justiceowusuagyemang@gmail.com','0501371810'),('Dr Jay Lux Ferro','admin','21232f297a57a5a743894a0e4a801fc3','justiceowusuagyemang@gmail.com','0205737153');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +189,7 @@ CREATE TABLE `banner` (
   `link` varchar(500) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +198,7 @@ CREATE TABLE `banner` (
 
 LOCK TABLES `banner` WRITE;
 /*!40000 ALTER TABLE `banner` DISABLE KEYS */;
-INSERT INTO `banner` VALUES (5,'2016-05-29-06-40-28.jpg','AYGEC 2016','?news&id=1',1),(6,'2016-05-29-06-41-04.jpg','AYGEC 2016','?news&id=1',1),(7,'2016-05-29-06-41-25.jpg','AYGEC 2016','?news&id=1',1),(8,'2016-05-29-07-07-01.jpg','AYGEC 2016','?news&id=1',1);
+INSERT INTO `banner` VALUES (11,'2016-08-22-04-58-54.jpg','',' ',1),(12,'2016-08-22-04-59-17.jpg','',' ',1);
 /*!40000 ALTER TABLE `banner` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,6 +316,11 @@ DROP TABLE IF EXISTS `configuration`;
 CREATE TABLE `configuration` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `marquee` varchar(100) DEFAULT NULL,
+  `sitename` varchar(200) DEFAULT NULL,
+  `siteshort` varchar(100) DEFAULT NULL,
+  `logo` varchar(100) DEFAULT NULL,
+  `favicon` varchar(100) DEFAULT NULL,
+  `siteurl` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -326,7 +331,7 @@ CREATE TABLE `configuration` (
 
 LOCK TABLES `configuration` WRITE;
 /*!40000 ALTER TABLE `configuration` DISABLE KEYS */;
-INSERT INTO `configuration` VALUES (1,'Welcome...GHANA NATIONAL ASSOCIATION OF ADVENTIST STUDENTS-KNUST BRANCH(GNAAS-KNUST)');
+INSERT INTO `configuration` VALUES (1,'Welcome...GHANA GEOTECHNICAL SOCIETY','GHANA GEOTECHNICAL SOCIETY','GGS','logo.png','favicon.ico','http://ghanageotech.org');
 /*!40000 ALTER TABLE `configuration` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -675,7 +680,7 @@ CREATE TABLE `lastlogin` (
 
 LOCK TABLES `lastlogin` WRITE;
 /*!40000 ALTER TABLE `lastlogin` DISABLE KEYS */;
-INSERT INTO `lastlogin` VALUES ('jayluxferro','127.0.0.1','2016-04-29 04:41:36'),('jayluxferro','127.0.0.1','2016-04-29 10:04:05'),('jayluxferro','127.0.0.1','2016-04-29 10:37:03'),('jayluxferro','127.0.0.1','2016-04-29 10:40:26'),('jayluxferro','127.0.0.1','2016-04-30 12:51:58'),('jayluxferro','127.0.0.1','2016-04-30 03:30:15'),('jayluxferro','127.0.0.1','2016-04-30 03:46:28'),('jayluxferro','127.0.0.1','2016-04-30 03:56:33'),('jayluxferro','127.0.0.1','2016-04-30 08:32:01'),('jayluxferro','127.0.0.1','2016-04-30 06:30:43'),('jayluxferro','127.0.0.1','2016-05-01 04:18:16'),('jayluxferro','127.0.0.1','2016-05-01 04:43:57'),('jayluxferro','127.0.0.1','2016-05-01 06:12:21'),('jayluxferro','127.0.0.1','2016-05-01 07:11:42'),('jayluxferro','127.0.0.1','2016-05-01 07:14:51'),('jayluxferro','127.0.0.1','2016-05-01 07:36:33'),('admin','127.0.0.1','2016-05-01 10:39:29'),('admin','127.0.0.1','2016-05-01 10:51:09'),('admin','127.0.0.1','2016-05-02 01:32:09'),('jayluxferro','127.0.0.1','2016-05-02 05:26:40'),('admin','127.0.0.1','2016-05-02 05:28:39'),('admin','127.0.0.1','2016-05-03 12:50:10'),('admin','127.0.0.1','2016-05-03 02:15:42'),('admin','127.0.0.1','2016-05-03 02:23:44'),('admin','127.0.0.1','2016-05-03 08:20:56'),('admin','127.0.0.1','2016-05-03 12:46:32'),('admin','127.0.0.1','2016-05-03 09:57:18'),('admin','127.0.0.1','2016-05-05 11:17:40'),('admin','127.0.0.1','2016-05-05 11:19:01'),('admin','127.0.0.1','2016-05-06 01:14:51'),('admin','127.0.0.1','2016-05-06 11:46:35'),('admin','127.0.0.1','2016-05-07 09:46:51'),('admin','127.0.0.1','2016-05-07 10:02:46'),('admin','127.0.0.1','2016-05-09 06:24:20'),('admin','127.0.0.1','2016-05-12 08:12:04'),('admin','127.0.0.1','2016-05-14 12:21:02'),('admin','127.0.0.1','2016-05-14 07:26:34'),('admin','127.0.0.1','2016-05-18 07:51:24'),('admin','127.0.0.1','2016-05-22 02:12:55'),('admin','127.0.0.1','2016-05-22 08:12:50'),('admin','127.0.0.1','2016-05-23 02:51:25'),('admin','127.0.0.1','2016-05-25 06:41:09'),('admin','127.0.0.1','2016-05-25 06:12:06'),('admin','127.0.0.1','2016-05-26 12:09:31'),('admin','127.0.0.1','2016-05-27 05:41:35'),('admin','127.0.0.1','2016-05-28 12:45:38'),('admin','127.0.0.1','2016-05-28 10:20:33'),('jayluxferro','127.0.0.1','2016-05-28 10:13:55'),('admin','127.0.0.1','2016-05-28 10:52:31'),('admin','127.0.0.1','2016-05-28 10:53:32'),('jayluxferro','127.0.0.1','2016-05-28 10:54:24'),('jayluxferro','127.0.0.1','2016-05-28 10:54:32'),('admin','127.0.0.1','2016-05-28 10:56:53'),('jayluxferro','127.0.0.1','2016-05-28 10:58:12'),('admin','127.0.0.1','2016-05-28 11:03:25'),('jayluxferro','127.0.0.1','2016-05-28 11:04:52'),('jayluxferro','127.0.0.1','2016-05-28 11:19:10'),('admin','127.0.0.1','2016-05-28 11:21:02'),('admin','127.0.0.1','2016-05-28 11:24:18'),('admin','127.0.0.1','2016-05-29 06:32:13'),('jayluxferro','127.0.0.1','2016-05-31 12:10:25'),('admin','127.0.0.1','2016-05-31 12:11:00'),('admin','127.0.0.1','2016-05-31 03:49:38'),('jayluxferro','127.0.0.1','2016-06-18 10:52:19'),('jayluxferro','127.0.0.1','2016-06-20 10:18:41'),('jayluxferro','127.0.0.1','2016-06-21 02:09:22'),('jayluxferro','127.0.0.1','2016-06-26 04:42:00'),('jayluxferro','127.0.0.1','2016-06-26 04:48:55'),('jayluxferro','127.0.0.1','2016-06-29 01:33:33'),('jayluxferro','::1','2016-07-07 03:02:45'),('jayluxferro','127.0.0.1','2016-07-09 12:03:32'),('jayluxferro','127.0.0.1','2016-07-09 12:14:31'),('jayluxferro','127.0.0.1','2016-07-09 12:23:35'),('jayluxferro','127.0.0.1','2016-07-09 12:30:23'),('jayluxferro','127.0.0.1','2016-07-09 12:31:35'),('jayluxferro','127.0.0.1','2016-07-13 05:05:44'),('jayluxferro','127.0.0.1','2016-08-05 08:57:45'),('jayluxferro','127.0.0.1','2016-08-07 06:13:54'),('jayluxferro','127.0.0.1','2016-08-07 06:15:37'),('jayluxferro','127.0.0.1','2016-08-08 05:58:14'),('jayluxferro','127.0.0.1','2016-08-08 06:05:08'),('jayluxferro','127.0.0.1','2016-08-11 12:53:32'),('admin','127.0.0.1','2016-08-11 01:05:12'),('admin','127.0.0.1','2016-08-12 04:28:55'),('jayluxferro','127.0.0.1','2016-08-14 07:26:34'),('admin','127.0.0.1','2016-08-16 01:23:05'),('admin','127.0.0.1','2016-08-16 06:21:18'),('admin','127.0.0.1','2016-08-17 07:29:55'),('admin','127.0.0.1','2016-08-17 12:18:53'),('jayluxferro','127.0.0.1','2016-08-17 04:19:21'),('drjay','127.0.0.1','2016-08-17 04:23:19'),('jayluxferro','127.0.0.1','2016-08-17 04:28:32'),('drjay','127.0.0.1','2016-08-17 04:30:51'),('jayluxferro','127.0.0.1','2016-08-17 04:55:59'),('jayluxferro','127.0.0.1','2016-08-17 11:56:05'),('jayluxferro','127.0.0.1','2016-08-18 12:05:10'),('jayluxferro','127.0.0.1','2016-08-18 12:56:00'),('jayluxferro','127.0.0.1','2016-08-18 02:08:00'),('admin','127.0.0.1','2016-08-18 02:10:57'),('admin','127.0.0.1','2016-08-18 02:13:43'),('admin','127.0.0.1','2016-08-18 02:25:12'),('jayluxferro','127.0.0.1','2016-08-18 02:38:43'),('jayluxferro','127.0.0.1','2016-08-18 04:59:03'),('jayluxferro','127.0.0.1','2016-08-19 01:18:51'),('jayluxferro','127.0.0.1','2016-08-19 02:00:36'),('jayluxferro','127.0.0.1','2016-08-19 02:09:34'),('admin','127.0.0.1','2016-08-19 02:30:34');
+INSERT INTO `lastlogin` VALUES ('jayluxferro','127.0.0.1','2016-04-29 04:41:36'),('jayluxferro','127.0.0.1','2016-04-29 10:04:05'),('jayluxferro','127.0.0.1','2016-04-29 10:37:03'),('jayluxferro','127.0.0.1','2016-04-29 10:40:26'),('jayluxferro','127.0.0.1','2016-04-30 12:51:58'),('jayluxferro','127.0.0.1','2016-04-30 03:30:15'),('jayluxferro','127.0.0.1','2016-04-30 03:46:28'),('jayluxferro','127.0.0.1','2016-04-30 03:56:33'),('jayluxferro','127.0.0.1','2016-04-30 08:32:01'),('jayluxferro','127.0.0.1','2016-04-30 06:30:43'),('jayluxferro','127.0.0.1','2016-05-01 04:18:16'),('jayluxferro','127.0.0.1','2016-05-01 04:43:57'),('jayluxferro','127.0.0.1','2016-05-01 06:12:21'),('jayluxferro','127.0.0.1','2016-05-01 07:11:42'),('jayluxferro','127.0.0.1','2016-05-01 07:14:51'),('jayluxferro','127.0.0.1','2016-05-01 07:36:33'),('admin','127.0.0.1','2016-05-01 10:39:29'),('admin','127.0.0.1','2016-05-01 10:51:09'),('admin','127.0.0.1','2016-05-02 01:32:09'),('jayluxferro','127.0.0.1','2016-05-02 05:26:40'),('admin','127.0.0.1','2016-05-02 05:28:39'),('admin','127.0.0.1','2016-05-03 12:50:10'),('admin','127.0.0.1','2016-05-03 02:15:42'),('admin','127.0.0.1','2016-05-03 02:23:44'),('admin','127.0.0.1','2016-05-03 08:20:56'),('admin','127.0.0.1','2016-05-03 12:46:32'),('admin','127.0.0.1','2016-05-03 09:57:18'),('admin','127.0.0.1','2016-05-05 11:17:40'),('admin','127.0.0.1','2016-05-05 11:19:01'),('admin','127.0.0.1','2016-05-06 01:14:51'),('admin','127.0.0.1','2016-05-06 11:46:35'),('admin','127.0.0.1','2016-05-07 09:46:51'),('admin','127.0.0.1','2016-05-07 10:02:46'),('admin','127.0.0.1','2016-05-09 06:24:20'),('admin','127.0.0.1','2016-05-12 08:12:04'),('admin','127.0.0.1','2016-05-14 12:21:02'),('admin','127.0.0.1','2016-05-14 07:26:34'),('admin','127.0.0.1','2016-05-18 07:51:24'),('admin','127.0.0.1','2016-05-22 02:12:55'),('admin','127.0.0.1','2016-05-22 08:12:50'),('admin','127.0.0.1','2016-05-23 02:51:25'),('admin','127.0.0.1','2016-05-25 06:41:09'),('admin','127.0.0.1','2016-05-25 06:12:06'),('admin','127.0.0.1','2016-05-26 12:09:31'),('admin','127.0.0.1','2016-05-27 05:41:35'),('admin','127.0.0.1','2016-05-28 12:45:38'),('admin','127.0.0.1','2016-05-28 10:20:33'),('jayluxferro','127.0.0.1','2016-05-28 10:13:55'),('admin','127.0.0.1','2016-05-28 10:52:31'),('admin','127.0.0.1','2016-05-28 10:53:32'),('jayluxferro','127.0.0.1','2016-05-28 10:54:24'),('jayluxferro','127.0.0.1','2016-05-28 10:54:32'),('admin','127.0.0.1','2016-05-28 10:56:53'),('jayluxferro','127.0.0.1','2016-05-28 10:58:12'),('admin','127.0.0.1','2016-05-28 11:03:25'),('jayluxferro','127.0.0.1','2016-05-28 11:04:52'),('jayluxferro','127.0.0.1','2016-05-28 11:19:10'),('admin','127.0.0.1','2016-05-28 11:21:02'),('admin','127.0.0.1','2016-05-28 11:24:18'),('admin','127.0.0.1','2016-05-29 06:32:13'),('jayluxferro','127.0.0.1','2016-05-31 12:10:25'),('admin','127.0.0.1','2016-05-31 12:11:00'),('admin','127.0.0.1','2016-05-31 03:49:38'),('jayluxferro','127.0.0.1','2016-06-18 10:52:19'),('jayluxferro','127.0.0.1','2016-06-20 10:18:41'),('jayluxferro','127.0.0.1','2016-06-21 02:09:22'),('jayluxferro','127.0.0.1','2016-06-26 04:42:00'),('jayluxferro','127.0.0.1','2016-06-26 04:48:55'),('jayluxferro','127.0.0.1','2016-06-29 01:33:33'),('jayluxferro','::1','2016-07-07 03:02:45'),('jayluxferro','127.0.0.1','2016-07-09 12:03:32'),('jayluxferro','127.0.0.1','2016-07-09 12:14:31'),('jayluxferro','127.0.0.1','2016-07-09 12:23:35'),('jayluxferro','127.0.0.1','2016-07-09 12:30:23'),('jayluxferro','127.0.0.1','2016-07-09 12:31:35'),('jayluxferro','127.0.0.1','2016-07-13 05:05:44'),('jayluxferro','127.0.0.1','2016-08-05 08:57:45'),('jayluxferro','127.0.0.1','2016-08-07 06:13:54'),('jayluxferro','127.0.0.1','2016-08-07 06:15:37'),('jayluxferro','127.0.0.1','2016-08-08 05:58:14'),('jayluxferro','127.0.0.1','2016-08-08 06:05:08'),('jayluxferro','127.0.0.1','2016-08-11 12:53:32'),('admin','127.0.0.1','2016-08-11 01:05:12'),('admin','127.0.0.1','2016-08-12 04:28:55'),('jayluxferro','127.0.0.1','2016-08-14 07:26:34'),('admin','127.0.0.1','2016-08-16 01:23:05'),('admin','127.0.0.1','2016-08-16 06:21:18'),('admin','127.0.0.1','2016-08-17 07:29:55'),('admin','127.0.0.1','2016-08-17 12:18:53'),('jayluxferro','127.0.0.1','2016-08-17 04:19:21'),('drjay','127.0.0.1','2016-08-17 04:23:19'),('jayluxferro','127.0.0.1','2016-08-17 04:28:32'),('drjay','127.0.0.1','2016-08-17 04:30:51'),('jayluxferro','127.0.0.1','2016-08-17 04:55:59'),('jayluxferro','127.0.0.1','2016-08-17 11:56:05'),('jayluxferro','127.0.0.1','2016-08-18 12:05:10'),('jayluxferro','127.0.0.1','2016-08-18 12:56:00'),('jayluxferro','127.0.0.1','2016-08-18 02:08:00'),('admin','127.0.0.1','2016-08-18 02:10:57'),('admin','127.0.0.1','2016-08-18 02:13:43'),('admin','127.0.0.1','2016-08-18 02:25:12'),('jayluxferro','127.0.0.1','2016-08-18 02:38:43'),('jayluxferro','127.0.0.1','2016-08-18 04:59:03'),('jayluxferro','127.0.0.1','2016-08-19 01:18:51'),('jayluxferro','127.0.0.1','2016-08-19 02:00:36'),('jayluxferro','127.0.0.1','2016-08-19 02:09:34'),('admin','127.0.0.1','2016-08-19 02:30:34'),('jayluxferro','127.0.0.1','2016-08-19 10:21:51'),('admin','127.0.0.1','2016-08-20 04:00:00'),('admin','127.0.0.1','2016-08-22 12:40:52'),('admin','127.0.0.1','2016-08-22 04:55:26'),('admin','127.0.0.1','2016-08-22 06:52:01'),('admin','127.0.0.1','2016-08-22 07:35:27');
 /*!40000 ALTER TABLE `lastlogin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1014,6 +1019,34 @@ INSERT INTO `sysnotifications` VALUES ('Server Up','2016-04-29 10:47:00');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `theme`
+--
+
+DROP TABLE IF EXISTS `theme`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `theme` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `bgcolor` varchar(100) DEFAULT NULL,
+  `headercolor` varchar(100) DEFAULT NULL,
+  `status` int(1) DEFAULT '0',
+  `menucolor` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `theme`
+--
+
+LOCK TABLES `theme` WRITE;
+/*!40000 ALTER TABLE `theme` DISABLE KEYS */;
+INSERT INTO `theme` VALUES (1,'Paloma','#7a1e21','#fff',0,'#7a1e21'),(2,'Tacoma','#035888','#fff',1,'#035888'),(3,'Tulip','#8ac352','#fff',0,'#000');
+/*!40000 ALTER TABLE `theme` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `titles`
 --
 
@@ -1035,6 +1068,32 @@ LOCK TABLES `titles` WRITE;
 /*!40000 ALTER TABLE `titles` DISABLE KEYS */;
 INSERT INTO `titles` VALUES (1,'Mr'),(2,'Miss'),(3,'Mrs'),(4,'Prof'),(5,'Dr');
 /*!40000 ALTER TABLE `titles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `topheader`
+--
+
+DROP TABLE IF EXISTS `topheader`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `topheader` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `link` varchar(100) DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  `glyphicon` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topheader`
+--
+
+LOCK TABLES `topheader` WRITE;
+/*!40000 ALTER TABLE `topheader` DISABLE KEYS */;
+/*!40000 ALTER TABLE `topheader` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1126,4 +1185,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-19 10:12:46
+-- Dump completed on 2016-08-22 10:02:13

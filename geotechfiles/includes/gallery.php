@@ -32,7 +32,7 @@
 						</select>
 					</div>
 					<div class="col-md-3">
-						<center><button type="submit" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
+						<center><button type="submit" class="btn btn-xs btn-success" style="margin-top: 5px;border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px;"><span class="glyphicon glyphicon-eye-open"></span> Preview</button>
 					</div>
 				</div>
 			</form>

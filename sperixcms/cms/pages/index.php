@@ -250,22 +250,10 @@ $configData=$geotech->getConfigurationData();
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#" class="bc" style="color: <?php echo $theme[2]; ?>;"><i class="fa fa-globe fa-fw" style="color: <?php echo $theme[2]; ?>;"></i> Site Configuration<span class="fa arrow"></span></a>
-                            <!-- providing dropdown for aygec2016 -->
-                            <ul class="nav nav-second-level" style="color: <?php echo $theme[2]; ?>;">
-                                <li><a href="#" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-pencil"></span> Theme</a></li>
-                            </ul>
-                            <!-- end of dropdown for aygec2016 -->
+                            <a href="?configuration" class="bc" style="color: <?php echo $theme[2]; ?>;"><i class="fa fa-globe fa-fw" style="color: <?php echo $theme[2]; ?>;"></i> Site Configuration</a>
                         </li>
                          <li>
-                                            <a href="#membership" data-toggle="modal" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-user"></span> GGS Membership</a>
-                        <li>
-                            <a href="#" class="bc" style="color: <?php echo $theme[2]; ?>;"><i class="fa fa-flash fa-fw" style="color: <?php echo $theme[2]; ?>;"></i> AYGEC 2016<span class="fa arrow"></span></a>
-                            <!-- providing dropdown for aygec2016 -->
-                            <ul class="nav nav-second-level" style="color: <?php echo $theme[2]; ?>;">
-                                <li><a href="?aygec=registered" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-pencil"></span> Registered Members</a></li>
-                            </ul>
-                            <!-- end of dropdown for aygec2016 -->
+                                            <a href="#membership" data-toggle="modal" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-user"></span> <?php echo $configData[3]; ?> Membership</a>
                         </li>
                     </ul>
                 </div>

@@ -14,7 +14,7 @@
 
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header well">
+			<div class="modal-header well" style="background-color: <?php echo $theme[2] ?>; color: #fff;">
 				<h5 style="font-size: 18px; height: 2px;"><center><span class="glyphicon glyphicon-earphone"></span> Contact GGS</center></h5>
 			</div>
 
