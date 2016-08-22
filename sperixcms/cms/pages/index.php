@@ -1,8 +1,10 @@
 <?php 
 session_start();
 require "../../../geotechfiles/includes/functions.php";
-$app = new Enersmart();
-$app->checkLoginAdmin();
+$geotech = new Enersmart();
+$geotech->checkLoginAdmin();
+$theme=$geotech->getTheme();
+$configData=$geotech->getConfigurationData();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +17,8 @@ $app->checkLoginAdmin();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>GGS</title>
-    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <title><?php echo $configData[3]; ?></title>
+    <link rel="shortcut icon" href="../../banners/<?php echo $configData[5];?>"/>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -84,7 +86,7 @@ $app->checkLoginAdmin();
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <img src="../../banners/logo.png" style="width: 50px; height: 50px; background-color: #7a1e21; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;" />
+            <img src="../../banners/<?php echo $configData[4]; ?>" style="width: 50px; height: 50px; background-color: <?php echo $theme[2]; ?>; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;" />
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">MENU</span>
@@ -92,24 +94,24 @@ $app->checkLoginAdmin();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><span style="color: #7a1e21; font-weight: bold;">GHANA GEOTECHNICAL SOCIETY</span></a>
+                <a class="navbar-brand" href="index.php"><span style="color: <?php echo $theme[2]; ?>; font-weight: bold;"><?php echo $configData[2]; ?></span></a>
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right" style="color: #7a1e21;">
+            <ul class="nav navbar-top-links navbar-right" style="color: <?php echo $theme[2]; ?>;">
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #7a1e21;">
-                        <i class="fa fa-envelope fa-fw bc" style="color: #7a1e21;"></i>  <i class="fa fa-caret-down bc" style="color: #7a1e21;"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: <?php echo $theme[2]; ?>;">
+                        <i class="fa fa-envelope fa-fw bc" style="color: <?php echo $theme[2]; ?>;"></i>  <i class="fa fa-caret-down bc" style="color: <?php echo $theme[2]; ?>;"></i>
                     </a>
                     <?php 
-                        $app->getMessages();
+                        $geotech->getMessages();
                     ?>
                     <!-- /.dropdown-messages -->
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #7a1e21">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: <?php echo $theme[2]; ?>">
                         <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     
@@ -117,20 +119,20 @@ $app->checkLoginAdmin();
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #7a1e21;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: <?php echo $theme[2]; ?>;">
                         <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <?php 
-                        $app->systemAlerts();
+                        $geotech->systemAlerts();
                     ?>
                                         <!-- /.dropdown-alerts -->
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #7a1e21;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: <?php echo $theme[2]; ?>;">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user" style="color: #7a1e21;">
+                    <ul class="dropdown-menu dropdown-user" style="color: <?php echo $theme[2]; ?>;">
                         <li><a href="?profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#settings" data-toggle="modal"><i class="fa fa-gear fa-fw"></i> Settings</a>
@@ -151,9 +153,9 @@ $app->checkLoginAdmin();
                 </div>
 
                 <div class="row">
-                <center><span style="color: #7a1e21;">
+                <center><span style="color: <?php echo $theme[2]; ?>;">
                     <?php 
-                        $result=$app->getFullDetails($_SESSION['gtadmin'],'admin');
+                        $result=$geotech->getFullDetails($_SESSION['gtadmin'],'admin');
                         echo $result[0];
                     ?>
                 </span></center>
@@ -164,96 +166,104 @@ $app->checkLoginAdmin();
                         <br/>
                         </li>
                         <li>
-                        <a href="?dashboard" style="color: #7a1e21;"><i class="fa fa-dashboard fa-fw" style="color: #7a1e21;"></i> Dashboard</a>
+                        <a href="?dashboard" style="color: <?php echo $theme[2]; ?>;"><i class="fa fa-dashboard fa-fw" style="color: <?php echo $theme[2]; ?>;"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#" class="bc" style="color: #7a1e21;"><i class="fa fa-pencil fa-fw" style="color: #7a1e21;"></i> Manage Site<span class="fa arrow"></span></a>
-                             <ul class="nav nav-second-level" style="color: #7a1e21;">
+                            <a href="#" class="bc" style="color: <?php echo $theme[2]; ?>;"><i class="fa fa-pencil fa-fw" style="color: <?php echo $theme[2]; ?>;"></i> Manage Site<span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level" style="color: <?php echo $theme[2]; ?>;">
                                  <li>
-                                    <a href="?menu" style="color: #7a1e21;"><span class="glyphicon glyphicon-th"></span> Menu(s)</a>
+                                    <a href="?menu" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-th"></span> Menu(s)</a>
                                 </li>
                                  <li>
-                                    <a href="?articles" style="color: #7a1e21;"><span class="glyphicon glyphicon-pencil"></span> Articles</a>
+                                    <a href="?articles" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-pencil"></span> Articles</a>
                                 </li>
                                 <li>
-                                    <a href="?banners" style="color: #7a1e21;"><span class="glyphicon glyphicon-picture"></span> Banners</a>
+                                    <a href="?banners" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-picture"></span> Banners</a>
                                 </li>
                                 <li>
-                                    <a href="?contact" style="color: #7a1e21;"><span class="glyphicon glyphicon-earphone"></span> Contact Us</a>
+                                    <a href="?contact" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-earphone"></span> Contact Us</a>
                                 </li>
                                 <li>
-                                    <a href="?about" style="color: #7a1e21;"><span class="glyphicon glyphicon-info-sign"></span> About Us</a>
+                                    <a href="?about" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-info-sign"></span> About Us</a>
                                 </li>
                                 <li>
-                                    <a href="?content" style="color: #7a1e21;"><span class="glyphicon glyphicon-info-sign"></span> Brief Content</a>
+                                    <a href="?content" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-info-sign"></span> Brief Content</a>
                                 </li>
                                 <li>
-                                            <a href="?news" style="color: #7a1e21;"><span class="glyphicon glyphicon-envelope"></span> Latest News/Events</a>
+                                            <a href="?news" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-envelope"></span> Latest News/Events</a>
                                         </li>
                                 <li>
-                                    <a href="?featurednews" style="color: #7a1e21;"><span class="glyphicon glyphicon-comment"></span> Featured News</a>
+                                    <a href="?featurednews" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-comment"></span> Featured News</a>
                                 </li>
                                 <li>
-                                    <a href="?happenings" style="color: #7a1e21;"><span class="glyphicon glyphicon-comment"></span> News/Happenings</a>
+                                    <a href="?happenings" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-comment"></span> News/Happenings</a>
                                 </li>
                                 <li>
-                                    <a href="?photos" style="color: #7a1e21;"><span class="glyphicon glyphicon-picture"></span> Latest Photos</a>
+                                    <a href="?photos" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-picture"></span> Latest Photos</a>
                                 </li>
                                 <li>
-                                    <a href="?world" style="color: #7a1e21;"><span class="glyphicon glyphicon-globe"></span> Around the world</a>
+                                    <a href="?world" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-globe"></span> Around the world</a>
                                 </li>
                                 <li>
-                                    <a href="?gallery" style="color: #7a1e21;"><span class="glyphicon glyphicon-picture"></span> Gallery</a>
+                                    <a href="?gallery" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-picture"></span> Gallery</a>
                                 </li>
                                 <li>
-                                    <a href="?downloads" style="color: #7a1e21;"><span class="glyphicon glyphicon-download"></span> Downloads</a>
+                                    <a href="?downloads" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-download"></span> Downloads</a>
                                 </li>
                                 <li>
-                                    <a href="?videos" style="color: #7a1e21;"><span class="glyphicon glyphicon-facetime-video"></span> Videos</a>
+                                    <a href="?videos" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-facetime-video"></span> Videos</a>
                                 </li>
                                 <!-- <li>
-                                    <a href="#" style="color: #7a1e21;"><span class="glyphicon glyphicon-link"></span> Page(s)<span class="fa arrow"></a>
-                                    <ul class="nav nav-third-level" style="color: #7a1e21;">
+                                    <a href="#" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-link"></span> Page(s)<span class="fa arrow"></a>
+                                    <ul class="nav nav-third-level" style="color: <?php echo $theme[2]; ?>;">
                                         <li>
-                                            <a href="#home" data-toggle="modal" style="color: #7a1e21;"><span class="glyphicon glyphicon-home"></span> Home</a>
+                                            <a href="#home" data-toggle="modal" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-home"></span> Home</a>
                                         </li>
                                         <li>
-                                            <a href="?about" style="color: #7a1e21;"><span class="glyphicon glyphicon-info-sign"></span> About Us</a>
+                                            <a href="?about" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-info-sign"></span> About Us</a>
                                         </li>
                                         <li>
-                                            <a href="#membership" data-toggle="modal" style="color: #7a1e21;"><span class="glyphicon glyphicon-user"></span> Membership</a>
+                                            <a href="#membership" data-toggle="modal" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-user"></span> Membership</a>
                                         </li>
                                         <li>
-                                            <a href="?news" style="color: #7a1e21;"><span class="glyphicon glyphicon-envelope"></span> Latest News/Events</a>
+                                            <a href="?news" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-envelope"></span> Latest News/Events</a>
                                         </li>
                                         <li>
-                                            <a href="#resources" data-toggle="modal" style="color: #7a1e21;"><span class="glyphicon glyphicon-briefcase"></span> Resources</a>
+                                            <a href="#resources" data-toggle="modal" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-briefcase"></span> Resources</a>
                                         </li>
                                         <li>
-                                            <a href="?contact"  style="color: #7a1e21;"><span class="glyphicon glyphicon-earphone"></span> Contact Us</a>
+                                            <a href="?contact"  style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-earphone"></span> Contact Us</a>
                                         </li>                                        
                                     </ul>
                                 </li> -->
                                 <li>
-                                    <a href="?spotlight" style="color: #7a1e21;"><span class="glyphicon glyphicon-flash"></span> SpotLight</a>
+                                    <a href="?spotlight" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-flash"></span> SpotLight</a>
                                 </li>
                                 <li>
-                                    <a href="?calendar" style="color: #7a1e21;"><span class="glyphicon glyphicon-calendar"></span> Events Calendar</a>
+                                    <a href="?calendar" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-calendar"></span> Events Calendar</a>
                                 </li>
                                 <li>
-                                    <a href="?announcements" style="color: #7a1e21;"><span class="glyphicon glyphicon-bell"></span> Announcements</a>
+                                    <a href="?announcements" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-bell"></span> Announcements</a>
                                 </li>
 
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                         <li>
-                                            <a href="#membership" data-toggle="modal" style="color: #7a1e21;"><span class="glyphicon glyphicon-user"></span> GGS Membership</a>
                         <li>
-                            <a href="#" class="bc" style="color: #7a1e21;"><i class="fa fa-flash fa-fw" style="color: #7a1e21;"></i> AYGEC 2016<span class="fa arrow"></span></a>
+                            <a href="#" class="bc" style="color: <?php echo $theme[2]; ?>;"><i class="fa fa-globe fa-fw" style="color: <?php echo $theme[2]; ?>;"></i> Site Configuration<span class="fa arrow"></span></a>
                             <!-- providing dropdown for aygec2016 -->
-                            <ul class="nav nav-second-level" style="color: #7a1e21;">
-                                <li><a href="?aygec=registered" style="color: #7a1e21;"><span class="glyphicon glyphicon-pencil"></span> Registered Members</a></li>
+                            <ul class="nav nav-second-level" style="color: <?php echo $theme[2]; ?>;">
+                                <li><a href="#" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-pencil"></span> Theme</a></li>
+                            </ul>
+                            <!-- end of dropdown for aygec2016 -->
+                        </li>
+                         <li>
+                                            <a href="#membership" data-toggle="modal" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-user"></span> GGS Membership</a>
+                        <li>
+                            <a href="#" class="bc" style="color: <?php echo $theme[2]; ?>;"><i class="fa fa-flash fa-fw" style="color: <?php echo $theme[2]; ?>;"></i> AYGEC 2016<span class="fa arrow"></span></a>
+                            <!-- providing dropdown for aygec2016 -->
+                            <ul class="nav nav-second-level" style="color: <?php echo $theme[2]; ?>;">
+                                <li><a href="?aygec=registered" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-pencil"></span> Registered Members</a></li>
                             </ul>
                             <!-- end of dropdown for aygec2016 -->
                         </li>
@@ -267,7 +277,7 @@ $app->checkLoginAdmin();
         <div id="page-wrapper">
             
                 <?php 
-                $app->loadContentAdmin(); 
+                $geotech->loadContentAdmin(); 
                 ?>
             <!-- /.row -->
         </div>

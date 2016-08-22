@@ -3,6 +3,8 @@ session_start();
 require "../../../geotechfiles/includes/functions.php";
 $app= new Enersmart();
 $app->checkIfLoggedInAdmin();
+$theme=$app->getTheme();
+$configData=$app->getConfigurationData();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +17,7 @@ $app->checkIfLoggedInAdmin();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>GSS | CMS - Log In</title>
+    <title><?php echo $configData[3];?> | CMS - Log In</title>
     <link rel="shortcut icon" href="../images/favicon.ico"/>
     <link rel="stylesheet" href="../css/index.css"/>
 
@@ -53,8 +55,8 @@ $app->checkIfLoggedInAdmin();
 </head>
 
 <body>
-    <div class="row" style="background-color: #7a1e21;">
-        <center><h4 href="#" style="color: #fff; font-size: 20px;"><span style="color: #fff; font-weight: bold;">GHANA GEOTECHICAL SOCIETY (GGS)&nbsp;&nbsp;&nbsp;&nbsp;</span>| &nbsp;&nbsp;&nbsp;Administrative Panel</h4></center>
+    <div class="row" style="background-color: <?php echo $theme[2]; ?>;">
+        <center><h4 href="#" style="color: #fff; font-size: 20px;"><span style="color: #fff; font-weight: bold;"><?php echo $configData[2];?> (<?php echo $configData[3];?>)&nbsp;&nbsp;&nbsp;&nbsp;</span>| &nbsp;&nbsp;&nbsp;Administrative Panel</h4></center>
     </div>
 
 
@@ -62,8 +64,8 @@ $app->checkIfLoggedInAdmin();
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
-                    <div class="panel-heading" style="background-color: #7a1e21; color: #fff;">
-                        <h3 class="panel-title" style="font-size: 25px; font-weight: bold;"><center><img src="../../banners/logo.png" style="width: 50px; height: 50px; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px;" /></center></h3>
+                    <div class="panel-heading" style="background-color: <?php echo $theme[2]; ?>; color: #fff;">
+                        <h3 class="panel-title" style="font-size: 25px; font-weight: bold;"><center><img src="../../banners/<?php echo $configData[4]; ?>" style="width: 50px; height: 50px; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px;" /></center></h3>
                     </div>
                     <div class="panel-body">
                          <div class="row" id="displayRes">
@@ -87,7 +89,7 @@ $app->checkIfLoggedInAdmin();
                                     <input class="form-control" id="password" placeholder="Password" name="password" type="password" required>
                                 </div>
                                 
-                                <center><button type="submit" class="btn btn-sm btn-success tooltip-bottom" title="Click to Log In" style="background-color: #7a1e21; border: 1px solid #7a1e21; border-radius: 10px; -webkit-border-radius: 10px; -webkit-border-radius: 10px;"><span class="glyphicon glyphicon-log-in"></span> Log In</button></center>
+                                <center><button type="submit" class="btn btn-sm btn-success tooltip-bottom" title="Click to Log In" style="background-color: <?php echo $theme[2]; ?>; border: 1px solid <?php echo $theme[2]; ?>; border-radius: 10px; -webkit-border-radius: 10px; -webkit-border-radius: 10px;"><span class="glyphicon glyphicon-log-in"></span> Log In</button></center>
                             </fieldset>
                         </form>
                     </div>

@@ -1,4 +1,7 @@
- <link rel="shortcut icon" href="images/favicon.ico">
+ <?php 
+    $configData=$geotech->getConfigurationData();
+    echo "<link rel='shortcut icon' href='banners/".$configData[5]."'/>";
+ ?>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <script type="text/javascript" src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>

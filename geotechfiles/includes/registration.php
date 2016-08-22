@@ -1,3 +1,7 @@
+<?php 
+	$theme=$this->getTheme();
+	$configData=$this->getConfigurationData();
+?>
 <div class="row" style="margin: 15px;">
 <table class="table">
 <legend><center><h4>This form should be completed by Individuals/Students/Firms at the appropriate sections</center></h4></legend>
@@ -5,7 +9,7 @@
 
 <!-- login credentials -->
 <div class="row" style="margin: 15px;">
-<h3 class="btn btn-md" style="background-color: #7a1e21; color: #fff; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;"><span class="glyphicon glyphicon-log-in"></span> Log In Credentials</h3>
+<h3 class="btn btn-md" style="background-color: <?php echo $theme[2]; ?>; color: #fff; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;"><span class="glyphicon glyphicon-log-in"></span> Log In Credentials</h3>
 </div>
 <div class="row well" style="margin: 15px;">
 	<div class="col-md-4">
@@ -33,7 +37,7 @@
 
 
 <div class="row" style="margin: 15px;">
-<h3 class="btn btn-md" style="background-color: #7a1e21; color: #fff; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;"><span class="glyphicon glyphicon-user"></span> Personal/Firm Information</h3>
+<h3 class="btn btn-md" style="background-color: <?php echo $theme[2]; ?>; color: #fff; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;"><span class="glyphicon glyphicon-user"></span> Personal/Firm Information</h3>
 </div>
 <!-- personal/firm information -->
 <div class="row well" style="margin: 15px;">
@@ -95,7 +99,7 @@
 
 
 <div class="row" style="margin: 15px;">
-<h3 class="btn btn-md" style="background-color: #7a1e21; color: #fff; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;"><span class="glyphicon glyphicon-education"></span> Educational Background</h3>
+<h3 class="btn btn-md" style="background-color: <?php echo $theme[2]; ?>; color: #fff; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;"><span class="glyphicon glyphicon-education"></span> Educational Background</h3>
 </div>
 <!-- educational background -->
 <div class="row well" style="margin: 15px;">
@@ -156,7 +160,7 @@
 
 
 <div class="row" style="margin: 15px;">
-<h3 class="btn btn-md" style="background-color: #7a1e21; color: #fff; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;"><span class="glyphicon glyphicon-wrench"></span> Professional Information</h3>
+<h3 class="btn btn-md" style="background-color: <?php echo $theme[2]; ?>; color: #fff; border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;"><span class="glyphicon glyphicon-wrench"></span> Professional Information</h3>
 </div>
 <!-- professional Information -->
 <div class="row well" style="margin: 15px;">

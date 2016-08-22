@@ -1,3 +1,7 @@
+<?php 
+    $theme=$this->getTheme();
+    $configData=$this->getConfigurationData();
+?>
 <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-comments fa-fw"></i>

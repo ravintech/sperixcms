@@ -1,4 +1,8 @@
 <?php 
+	$theme=$this->getTheme();
+	$configData=$this->getConfigurationData();
+?>
+<?php 
 $info=$this->getFullDetails($_SESSION['gtadmin'],"admin");
 ?>
 <div class="row">
@@ -9,7 +13,7 @@ $info=$this->getFullDetails($_SESSION['gtadmin'],"admin");
 	<!-- defining modal for profile view -->
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header" style="background-color: #7a1e21; color: #fff;">
+				<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>; color: #fff;">
 					<center><h3 class="panel-title" style="color: #fff;"><span class="glyphicon glyphicon-envelope"></span> Received Messages</h3></center>
 				</div>
 

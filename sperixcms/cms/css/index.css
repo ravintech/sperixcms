@@ -66,19 +66,6 @@ a:visited{
     width: 25px;
     height: 25px;
 }
-.header2{
-    background-color: #248f82;
-    color: #fff;
-      margin: 0px 0px 0px 0px;
-    padding: 0px;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#248f82), to(#248f82));
-  background-image: -webkit-linear-gradient(top, #248f82 0%, #248f82 100%);
-  background-image:      -o-linear-gradient(top, #248f82 0%, #248f82 100%);
-  background-image:         linear-gradient(to bottom, #248f82 0%,#248f82 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#248f82', endColorstr='#248f82',GradientType=0 ); /* IE6-9 */
-  background-repeat: repeat-x; /* Repeat the gradient */
-  border-bottom: 1px solid #248f82;
-}
 .searchForm{
     padding: 20px;
 }

@@ -1,3 +1,7 @@
+<?php 
+	$theme=$this->getTheme();
+	$configData=$this->getConfigurationData();
+?>
 <div class="row" style="margin: 15px;">
 <center><img src="../../banners/aygec2016.png" style="width: 70px; height: 70px;"></center>
 </div>

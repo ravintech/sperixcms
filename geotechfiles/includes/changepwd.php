@@ -1,3 +1,7 @@
+<?php 
+	$theme=$this->getTheme();
+	$configData=$this->getConfigurationData();
+?>
 <div class="row">
 <br/>
 </div>
@@ -6,7 +10,7 @@
 	<div class="col-md-8">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
-				<div class="modal-header" style="background-color: #7a1e21;">
+				<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 					<h3 style="color: #fff; font-size: 15px;" class="panel-title"><center><span class="glyphicon glyphicon-lock"></span> Change Account Password</center></h3>
 				</div>
 

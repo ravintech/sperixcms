@@ -1,3 +1,7 @@
+<?php 
+	$theme=$geotech->getTheme();
+	$configData=$geotech->getConfigurationData();
+?>
 <div class="row" style="background-color: #c0c0c0">
 <div class="col-md-6">
 <center>
@@ -16,7 +20,7 @@
 &nbsp;
 </div>
 <div class="col-md-8">
-<center><h4 style="color: #fff;"><span class="glyphicon glyphicon-copyright-mark"></span> <?php echo date("Y"); ?>  Ghana Geotechnical Society</h4></center>
+<center><h4 style="color: #fff;"><span class="glyphicon glyphicon-copyright-mark"></span> <?php echo date("Y"); ?>  <?php echo $configData[2]; ?></h4></center>
 </div>
 
 <div class="col-md-2">

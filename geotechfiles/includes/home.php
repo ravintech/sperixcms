@@ -1,19 +1,22 @@
+<?php 
+	$theme=$this->getTheme();
+	$configData=$this->getConfigurationData();
+?>
+
 <div class="row" style="padding: 0px; margin: 0px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;">
 <div class="col-md-1" style="background-color: #C0C0C0">
 
 </div>
 
 <div class="col-md-10" style="background-color: #fff;">
-<div class="row" style="border-radius: 10px; -moz-border-radius: 10px;-webkit-border-radius: 10px; margin: 5px;background-color: #000; color: #fff; font-weight: bold; padding: 0px;">
-<center><h4><marquee behaviour="scroll" direction="left" scrollamount="4" onmouseover="this.stop()" onmouseout="this.start()">Welcome...GHANA GEOTECHNICAL SOCIETY</marquee></h4></center>
-</div>
+<?php include "marquee.php"; ?>
 <div class="row">
 <div class="col-md-9">
 <?php include "carousel.php"; ?>
 </div>
 <div class="col-md-3">
 <div class="panel panel-default well">
-<div class="panel-heading" style="background-color: #7a1e21; color: #fff">
+<div class="panel-heading" style="background-color: <?php echo $theme[2]; ?>; color: #fff">
 <span class="glyphicon glyphicon-th"> </span><b> In The Spotlight</b>
 </div>
 <div class="panel-body">
@@ -39,7 +42,7 @@
 
 <div class="col-md-3">
 <div class="panel panel-default well">
-<div class="panel-heading" style="background-color: #7a1e21; color: #fff">
+<div class="panel-heading" style="background-color: <?php echo $theme[2]; ?>; color: #fff">
 <span class="glyphicon glyphicon-calendar"> </span><b> Events Calendar</b>
 </div>
 <div class="panel-body">
@@ -56,7 +59,7 @@
 <div class="row" style="margin: 5px;">
 <div class="col-md-4">
 <div class="panel panel-default well">
-<div class="panel-heading" style="background-color: #7a1e21; color: #fff">
+<div class="panel-heading" style="background-color: <?php echo $theme[2]; ?>; color: #fff">
 <span class="glyphicon glyphicon-comment"> </span><b> Featured News</b>
 </div>
 <div class="panel-body">
@@ -69,7 +72,7 @@
 
 <div class="col-md-4">
 <div class="panel panel-default well">
-<div class="panel-heading" style="background-color: #7a1e21; color: #fff">
+<div class="panel-heading" style="background-color: <?php echo $theme[2]; ?>; color: #fff">
 <span class="glyphicon glyphicon-comment"> </span><b> News & Happenings</b>
 </div>
 <div class="panel-body">
@@ -82,7 +85,7 @@
 
 <div class="col-md-4">
 <div class="panel panel-default well">
-<div class="panel-heading" style="background-color: #7a1e21; color: #fff">
+<div class="panel-heading" style="background-color: <?php echo $theme[2]; ?>; color: #fff">
 <span class="glyphicon glyphicon-bell"> </span><b> Announcements</b>
 </div>
 <div class="panel-body">
@@ -102,7 +105,7 @@ $this->loadAnnouncements();
 <div class="row" style="margin: 5px;">
 <div class="col-md-6">
 <div class="panel panel-default well">
-<div class="panel-heading" style="background-color: #7a1e21; color: #fff">
+<div class="panel-heading" style="background-color: <?php echo $theme[2]; ?>; color: #fff">
 <span class="glyphicon glyphicon-picture"> </span><b> Latest Photos</b>
 </div>
 <div class="panel-body">
@@ -115,7 +118,7 @@ $this->loadAnnouncements();
 
 <div class="col-md-6">
 <div class="panel panel-default well">
-<div class="panel-heading" style="background-color: #7a1e21; color: #fff">
+<div class="panel-heading" style="background-color: <?php echo $theme[2]; ?>; color: #fff">
 <span class="glyphicon glyphicon-globe"> </span><b> Around the world</b>
 </div>
 <div class="panel-body">

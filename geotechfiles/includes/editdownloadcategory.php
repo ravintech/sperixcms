@@ -1,4 +1,8 @@
 <?php 
+	$theme=$this->getTheme();
+	$configData=$this->getConfigurationData();
+?>
+<?php 
 	if(isset($_POST['updatecategory'])){
 		$this->updateCategory('downloads','downloadslist','downloads');
 	}

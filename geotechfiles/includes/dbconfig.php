@@ -2,5 +2,5 @@
 define('HOST','localhost');
 define('USERNAME','root');
 define('PASSWORD','.?');
-define('DB_NAME','geotech');
+define('DB_NAME','sperixcms');
 ?> 

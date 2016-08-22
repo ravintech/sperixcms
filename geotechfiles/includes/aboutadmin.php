@@ -1,3 +1,7 @@
+<?php 
+	$theme=$this->getTheme();
+	$configData=$this->getConfigurationData();
+?>
 <div class="row">
 <br/>
 </div>
@@ -11,7 +15,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header well">
-				<h5 style="font-size: 18px; height: 2px;"><center><span class="glyphicon glyphicon-info-sign"></span> About GGS</center></h5>
+				<h5 style="font-size: 18px; height: 2px;"><center><span class="glyphicon glyphicon-info-sign"></span> About <?php echo $configData[3]; ?></center></h5>
 			</div>
 
 			<div class="modal-body">

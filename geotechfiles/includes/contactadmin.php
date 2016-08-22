@@ -1,3 +1,7 @@
+<?php 
+	$theme=$this->getTheme();
+	$configData=$this->getConfigurationData();
+?>
 <div class="row">
 <br/>
 </div>

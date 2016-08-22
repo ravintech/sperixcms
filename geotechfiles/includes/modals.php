@@ -1,8 +1,12 @@
+<?php 
+	$theme=$geotech->getTheme();
+	$configData=$geotech->getConfigurationData();
+?>
 <!--view glyphicons -->
 <div id="viewglyphicons" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-the"></span> View Glyphicons</center></h3>
 			</div>
 			<div class="modal-body">
@@ -22,7 +26,7 @@
 <div id="addSubMenu" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-the"></span> Add SubMenu</center></h3>
 			</div>
 			<div class="modal-body">
@@ -37,7 +41,7 @@
 							<select name="article" id="article" class="form-control"/>
 									<option value=" ">None</option>
 									<?php 
-										$app->genLinks();
+										$geotech->genLinks();
 									?>
 							</select>
 						</div>
@@ -45,7 +49,7 @@
 							<label for="parent"><span class="glyphicon glyphicon-envelope"></span> Parent Menu:</label>
 							<select name="parent" id="parent" class="form-control" required/>
 									<?php 
-										$app->genMenuIds();
+										$geotech->genMenuIds();
 									?>
 							</select>
 						</div>
@@ -53,7 +57,7 @@
 							<label for="glyphicon"><span class="glyphicon glyphicon-flash"></span> Glyphicon:</label>
 							<select name="glyphicon" id="glyphicon" class="form-control"/>
 									<?php 
-										$app->genGlyphicon();
+										$geotech->genGlyphicon();
 									?>
 							</select>
 						</div>
@@ -74,7 +78,7 @@
 <div id="addMenu" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-th"></span> Add Menu</center></h3>
 			</div>
 			<div class="modal-body">
@@ -89,7 +93,7 @@
 							<select name="article" id="article" class="form-control"/>
 									<option value=" ">None</option>
 									<?php 
-										$app->genLinks();
+										$geotech->genLinks();
 									?>
 							</select>
 						</div>
@@ -97,7 +101,7 @@
 							<label for="glyphicon"><span class="glyphicon glyphicon-flash"></span> Glyphicon:</label>
 							<select name="glyphicon" id="glyphicon" class="form-control"/>
 									<?php 
-										$app->genGlyphicon();
+										$geotech->genGlyphicon();
 									?>
 							</select>
 						</div>
@@ -119,7 +123,7 @@
 <div id="addFileDownloadCategory" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-picture"></span> Add File to Downloads Category</center></h3>
 			</div>
 			<div class="modal-body">
@@ -129,7 +133,7 @@
 							<label for="category"><span class="glyphicon glyphicon-flash"></span> Category:</label>
 							<select name="category" id="category" class="form-control"  required>
 									<?php 
-										$app->gendownloadsCategory();
+										$geotech->gendownloadsCategory();
 									?>
 							</select>
 						</div>
@@ -158,7 +162,7 @@
 <div id="addDownloadsCategory" class="modal fade">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-downloads"></span> Add Downloads Category</center></h3>
 			</div>
 			<div class="modal-body">
@@ -186,7 +190,7 @@
 <div id="addVideosCategory" class="modal fade">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-facetime-video"></span> Add Video Category</center></h3>
 			</div>
 			<div class="modal-body">
@@ -213,7 +217,7 @@
 <div id="addVideoToCategory" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-facetime-video"></span> Add Video to Category</center></h3>
 			</div>
 			<div class="modal-body">
@@ -223,7 +227,7 @@
 							<label for="category"><span class="glyphicon glyphicon-flash"></span> Category:</label>
 							<select name="category" id="category" class="form-control"  required>
 									<?php 
-									$app->genVideosCategory();
+									$geotech->genVideosCategory();
 									?>
 							</select>
 						</div>
@@ -252,7 +256,7 @@
 <div id="addPictureGalleryCategory" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-picture"></span> Add Image to Gallery Category</center></h3>
 			</div>
 			<div class="modal-body">
@@ -262,7 +266,7 @@
 							<label for="category"><span class="glyphicon glyphicon-flash"></span> Category:</label>
 							<select name="category" id="category" class="form-control"  required>
 									<?php 
-									$app->genGalleryCategory();
+									$geotech->genGalleryCategory();
 									?>
 							</select>
 						</div>
@@ -292,7 +296,7 @@
 <div id="addGalleryCategory" class="modal fade">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-picture"></span> Add Gallery Category</center></h3>
 			</div>
 			<div class="modal-body">
@@ -319,7 +323,7 @@
 <div id="addNews" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-pencil"></span> Latest News/Events</h3>
 			</div>
 			<div class="modal-body">
@@ -341,7 +345,7 @@
 							<select class="form-control" id="articles" name="articles" onchange="loadNewsContent(this.value)">
 								<option value="0">None</option>
 								<?php 
-										$app->genLinks2();
+										$geotech->genLinks2();
 								?>
 							</select>
 						</div>
@@ -374,7 +378,7 @@
 <div id="addArticles" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-pencil"></span> Articles</h3>
 			</div>
 			<div class="modal-body">
@@ -420,7 +424,7 @@
 <div id="addCalendar" class="modal fade">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-pencil"></span> Brief Content</center></h3>
 			</div>
 			<div class="modal-body">
@@ -461,7 +465,7 @@
 <div id="addAnnouncements" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-bell"></span> Announcements</center></h3>
 			</div>
 			<div class="modal-body">
@@ -494,7 +498,7 @@
 <div id="addspotlight" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-th"></span> Spotlight</center></h3>
 			</div>
 			<div class="modal-body">
@@ -546,7 +550,7 @@
 <div id="addContactUs" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-earphone"></span> Contact GGS</center></h3>
 			</div>
 			<div class="modal-body">
@@ -579,7 +583,7 @@
 <div id="addAboutUs" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-info-sign"></span> About GGS</center></h3>
 			</div>
 			<div class="modal-body">
@@ -612,7 +616,7 @@
 <div id="addATW" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-globe"></span> Around the world</center></h3>
 			</div>
 			<div class="modal-body">
@@ -655,7 +659,7 @@
 <div id="addLatestPhotos" class="modal fade">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-picture"></span> Latest Photos</center></h3>
 			</div>
 			<div class="modal-body">
@@ -706,7 +710,7 @@
 <div id="addHappeningNews" class="modal fade">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 			<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-comment"></span> News/Happenings</center></h3>
 			</div>
 			<div class="modal-body">
@@ -734,7 +738,7 @@
 <div id="addFeaturedNews" class="modal fade">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 			<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-comment"></span> Featured News</center></h3>
 			</div>
 			<div class="modal-body">
@@ -762,7 +766,7 @@
 <div id="addBanner" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-picture"></span> Banners</center></h3>
 			</div>
 			<div class="modal-body">
@@ -807,7 +811,7 @@
 <div id="addContent" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-pencil"></span> Brief Content</center></h3>
 			</div>
 			<div class="modal-body">
@@ -855,7 +859,7 @@
 <div id="editaygec" class="modal fade">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-pencil"></span> Edit Registration Details</center></h3>
 			</div>
 			<div class="modal-body">
@@ -886,7 +890,7 @@
 <div id="tours" class="modal fade">
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-flash"></span> Post Conference Tour Details</center></h3>
 			</div>
 			<div class="modal-body">
@@ -948,22 +952,22 @@
 <div id="hotels" class="modal fade">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-flash"></span> Hotels</center></h3>
 			</div>
 			<div class="modal-body">
 				<div class="row" style="margin-right: 15px;">
 				<div class="col-md-3">
-					<button type="button" id="lamerta" class="btn btn-md btn-success" style="background-color: #7a1e21; color: #fff;"><span class="glyphicon glyphicon-plus"></span> Royal Lamerta hotel</button>
+					<button type="button" id="lamerta" class="btn btn-md btn-success" style="background-color: <?php echo $theme[2]; ?>; color: #fff;"><span class="glyphicon glyphicon-plus"></span> Royal Lamerta hotel</button>
 				</div>
 				<div class="col-md-3">
-					<button type="button" id="max" class="btn btn-md btn-success" style="background-color: #7a1e21; color: #fff;"><span class="glyphicon glyphicon-plus"></span> Sir Max hotel</button>
+					<button type="button" id="max" class="btn btn-md btn-success" style="background-color: <?php echo $theme[2]; ?>; color: #fff;"><span class="glyphicon glyphicon-plus"></span> Sir Max hotel</button>
 				</div>
 				<div class="col-md-3">
-					<button type="button" id="villa" class="btn btn-md btn-success" style="background-color: #7a1e21; color: #fff;"><span class="glyphicon glyphicon-plus"></span> Bani Villa hotel</button>
+					<button type="button" id="villa" class="btn btn-md btn-success" style="background-color: <?php echo $theme[2]; ?>; color: #fff;"><span class="glyphicon glyphicon-plus"></span> Bani Villa hotel</button>
 				</div>
 				<div class="col-md-3">
-					<button type="button" id="brunei" class="btn btn-md btn-success" style="background-color: #7a1e21; color: #fff;"><span class="glyphicon glyphicon-plus"></span> International Students Hostel</button>
+					<button type="button" id="brunei" class="btn btn-md btn-success" style="background-color: <?php echo $theme[2]; ?>; color: #fff;"><span class="glyphicon glyphicon-plus"></span> International Students Hostel</button>
 				</div>
 				</div>
 				<div class="row" id="dispInfo" style="margin: 15px;"></div>
@@ -1003,7 +1007,7 @@
 <div id="settings" class="modal fade">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21; color: #fff;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>; color: #fff;">
 				<h3 class="panel-title" style="font-size: 15px; color: #fff;"><center><span class="glyphicon glyphicon-cog"></span> User Settings</center></h3>
 			</div>
 
@@ -1029,7 +1033,7 @@
 <div id="home" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<center><h3 class="panel-title" style="color: #fff;"><span class="glyphicon glyphicon-home"></span> Home</h3></center>
 			</div>
 			<div class="modal-body">
@@ -1068,7 +1072,7 @@
 <div id="about" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<center><h3 class="panel-title" style="color: #fff;"><span class="glyphicon glyphicon-info-sign"></span> About Us</h3></center>
 			</div>
 			<div class="modal-body">
@@ -1085,7 +1089,7 @@
 <div id="membership" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-		<div class="modal-header" style="background-color: #7a1e21;">
+		<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 			<center><h3 class="panel-title" style="color: #fff;"><span class="glyphicon glyphicon-user"></span> Membership </h3></center>
 		</div>
 		<div class="modal-body">
@@ -1109,7 +1113,7 @@
 <div id="news" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<center><h3 class="panel-title" style="color: #fff;"><span class="glyphicon glyphicon-comment"></span> News/Events</h3></center>
 			</div>
 			<div class="modal-body">
@@ -1127,7 +1131,7 @@
 <div id="resources" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<center><h3 class="panel-title" style="color: #fff;"><span class="glyphicon glyphicon-briefcase"></span> Resources</h3></center>
 			</div>
 			<div class="modal-body">
@@ -1155,7 +1159,7 @@
 <div id="contact" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header" style="background-color: #7a1e21;">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
 				<center><h3 class="panel-title" style="color: #fff;"><span class="glyphicon glyphicon-earphone"></span> Contact Us</h3></center>
 			</div>
 			<div class="modal-body">

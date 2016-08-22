@@ -1,5 +1,9 @@
+<?php 
+    $theme=$this->getTheme();
+    $configData=$this->getConfigurationData();
+?>
 <div class="chat-panel panel panel-default">
-                        <div class="panel-heading" style=" background-color: #7a1e21; color: #fff;">
+                        <div class="panel-heading" style=" background-color: <?php echo $theme[2]; ?>; color: #fff;">
                             <i class="fa fa-comments fa-fw"></i>
                             Chat
                             <div class="btn-group pull-right">

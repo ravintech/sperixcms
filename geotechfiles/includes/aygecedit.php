@@ -1,3 +1,7 @@
+<?php 
+	$theme=$this->getTheme();
+	$configData=$this->getConfigurationData();
+?>
 <?php
 	if(!isset($_SESSION['aygecmember'])){
 		echo "<script>	

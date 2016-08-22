@@ -19,6 +19,7 @@ function genrss(){
 	$handle=fopen("rss.xml","w");
 	fwrite($handle, " ");
 	fclose($handle);
+	$configData=$this->getConfigurationData();
 	$data="<?xml version='1.0' encoding='UTF-8'?><rss version='2.0'
 	xmlns:content='http://purl.org/rss/1.0/modules/content/'
 	xmlns:wfw='http://wellformedweb.org/CommentAPI/'
@@ -29,7 +30,7 @@ function genrss(){
 	>";
 	$data.="<channel>";
 	$data.="<title>
-		Ghana Geotechnical Society: News and Happenings
+		".$configData[2].": News and Happenings
 		</title>
 		<link>/rss.xml</link>
 		<language>en-us</language>
@@ -47,11 +48,11 @@ function genrss(){
 			$data.="<item>
 			<title>".ucwords(strtolower($row['title']))."</title>
 			<link>
-			http://ghanageotech.org/?news&amp;id=".$row['id']."
+			".$configData[6]."/?news&amp;id=".$row['id']."
 			</link>
 			<description>
 			<![CDATA[
-			<img src='http://ghanageotech.org/banners/".$row['image']."' align='left' hspace='10' alt='' /><p><a".substr($row['message'], 0, 250)."</p>
+			<img src='".$configData[6]."/banners/".$row['image']."' align='left' hspace='10' alt='' /><p><a".substr($row['message'], 0, 250)."</p>
 			]]>
 			</description>
 			<pubDate>".$row['date']."</pubDate>
@@ -4905,6 +4906,21 @@ function verifyCredentials($username,$password,$dbtable){
 	}else{
 		return 0;
 	}
+}
+
+
+function getConfigurationData(){
+	$query="select * from configuration limit 1";
+	$result=mysql_query($query);
+	$result=mysql_fetch_row($result);
+	return $result;
+}
+
+function getTheme(){
+	$query="select * from theme where status=1";
+	$result=mysql_query($query);
+	$result=mysql_fetch_row($result);
+	return $result;
 }
 //#########################################################..ADMIN....
 
