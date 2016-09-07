@@ -9,7 +9,7 @@
 
 
 <div class="row" style="margin: 15px;">
-	<center><legend><span class="glyphicon glyphicon-user"></span> GGS Registered Members</legend></center>
+	<center><legend><span class="glyphicon glyphicon-user"></span> <?php echo $configData['3'];?> Registered Members</legend></center>
 </div>
 
 <div class="row">

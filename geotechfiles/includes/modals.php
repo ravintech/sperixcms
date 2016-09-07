@@ -252,6 +252,47 @@
 	</div>
 </div>
 
+
+<!-- add picture to Image category -->
+<div id="addPictureImageCategory" class="modal fade">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
+				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-picture"></span> Add Image to Category</center></h3>
+			</div>
+			<div class="modal-body">
+				<div class="row well" style="margin: 15px;">
+					<form method="post" action="?images" class="form" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="category"><span class="glyphicon glyphicon-flash"></span> Category:</label>
+							<select name="category" id="category" class="form-control"  required>
+									<?php 
+									$geotech->genGalleryCategory2();
+									?>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="image"><span class="glyphicon glyphicon-picture"></span> Image:</label>
+							<input type="file" name="bannerImg" id="image" accept="image/*" class="form-control" onchange="showMyImage1(this,'galleryPicd')" required/>
+							<center><img src=" " class="img-thumbnail" id="galleryPicd"/></center>
+						</div>
+						<div class="form-group">
+							<label for="description"><span class="glyphicon glyphicon-comment"></span> Description:</label>
+							<textarea id="description" name="description" class="form-control editfield"></textarea>
+						</div>
+						<div class="form-group">
+							<center><button type="submit" name="addImageCategoryBtn" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"></span> Add Image to Category</button></center>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+
+			</div>
+		</div>
+	</div>
+</div>
+
 <!-- add picture to gallery category -->
 <div id="addPictureGalleryCategory" class="modal fade">
 	<div class="modal-dialog modal-md">
@@ -302,6 +343,33 @@
 			<div class="modal-body">
 				<div class="row well" style="margin: 15px;">
 					<form method="post" action="?gallery" class="form" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="category"><span class="glyphicon glyphicon-flash"></span> Category:</label>
+							<input type="text" id="category" name="category" class="form-control" placeholder="Category" required/>
+						</div>
+						<div class="form-group">
+							<center><button type="submit" name="addCategoryBtn" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"></span> Add Category</button></center>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- add image category -->
+<div id="addImageCategory" class="modal fade">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>;">
+				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-picture"></span> Add Image Category</center></h3>
+			</div>
+			<div class="modal-body">
+				<div class="row well" style="margin: 15px;">
+					<form method="post" action="?images" class="form" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="category"><span class="glyphicon glyphicon-flash"></span> Category:</label>
 							<input type="text" id="category" name="category" class="form-control" placeholder="Category" required/>
@@ -722,7 +790,7 @@
 						</div>
 						<div class="form-group">
 							<label for="source">Source:</label>
-							<textarea class="form-control" name="source" id="source" required></textarea>
+							<input type="text" class="form-control" name="source" id="source11" placeholder="eg. http://spiderapps.net/" required/>
 						</div>
 						<div class="form-group">
 							<center><button type="submit" name="addFNBtn" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span> Add News/Happenings</button></center>
@@ -750,7 +818,7 @@
 						</div>
 						<div class="form-group">
 							<label for="source">Source:</label>
-							<textarea class="form-control" name="source" id="source" required></textarea>
+							<input type="text" class="form-control" name="source" id="source111" placeholder="e.g. http://spiderapps.net/" required/>
 						</div>
 						<div class="form-group">
 							<center><button type="submit" name="addFNBtn" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span> Add Featured News</button></center>

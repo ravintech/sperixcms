@@ -53,12 +53,12 @@
 						<div class="col-md-5 well">
 							<div class="form-group">
 								<label for="logo"><span class="glyphicon glyphicon-picture"></span> Logo:</label>
-								<input type="file" id="logo" name="logo" class="form-control" onchange="showMyConfigImage(this,'logoPic')" placeholder="Logo"/><br/>
+								<input type="file" id="logo" name="logo" class="form-control" onchange="showMyConfigImage(this,'logoPic')" accept="image/*" placeholder="Logo"/><br/>
 								<center><img src="../../banners/<?php echo $configData[4]; ?>" class="img-thumbnail" id="logoPic" style="width: 70px; height: 70px; background-color: <?php echo $theme[2]; ?>;" /></center><br/><br/>
 							</div>
 							<div class="form-group">
 								<label for="favicon"><span class="glyphicon glyphicon-picture"></span> Favicon:</label>
-								<input type="file" id="favicon" name="favicon" onchange="showMyConfigImage(this,'faviconPic')" class="form-control" placeholder="favicon"/><br/>
+								<input type="file" id="favicon" name="favicon" onchange="showMyConfigImage(this,'faviconPic')"  accept="image/*" class="form-control" placeholder="favicon"/><br/>
 								<center><img src="../../banners/<?php echo $configData[5]; ?>" class="img-thumbnail" id="faviconPic" style="width: 30px; height: 30px;background-color: <?php echo $theme[2]; ?>;" /></center><br/><br/>
 							</div>
 						</div>

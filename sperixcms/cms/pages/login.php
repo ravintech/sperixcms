@@ -18,7 +18,7 @@ $configData=$app->getConfigurationData();
     <meta name="author" content="">
 
     <title><?php echo $configData[3];?> | CMS - Log In</title>
-    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="shortcut icon" href="../../banners/<?php echo $configData[5]; ?>"/>
     <link rel="stylesheet" href="../css/index.css"/>
 
     <!-- jQuery -->

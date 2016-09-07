@@ -9,7 +9,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header" style="background-color: <?php echo $theme[2]; ?>; clor: #fff;">
-				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-user"></span> GGS Active Members</center></h3>
+				<h3 class="panel-title" style="color: #fff;"><center><span class="glyphicon glyphicon-user"></span> <?php echo $configData['3'];?> Active Members</center></h3>
 			</div>
 			<div class="modal-body">
 				<div class="row" style="margin: 15px;">

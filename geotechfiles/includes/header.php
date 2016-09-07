@@ -1,6 +1,8 @@
 <?php 
   $theme=$geotech->getTheme();
   $configData=$geotech->getConfigurationData();
+  $topheader=$geotech->getTopHeaderConfig();
+  $social=$geotech->getSocialLinks();
 ?>
 <?php 
   echo "<style>
@@ -25,22 +27,22 @@
 </div>
  
 <div class="col-md-2">
-<center><a href="?register" data-toggle="modal" data-keyboard="false" data-backdrop="static" class="noTd tooltip-bottom" title="Gallery"><span class="glyphicon glyphicon-user"></span> Register as GGS Member</center>
+<center><a href="<?php echo $topheader[0][1]; ?>" <?php if($topheader[0][4]==0){ echo "target='_blank'"; } ?> class="noTd tooltip-bottom" title="<?php echo $topheader[0][2]; ?>"><span class="glyphicon glyphicon-<?php echo $topheader[0][3]; ?>"></span> <?php echo $topheader[0][2]; ?></center>
 </div>
 
 <div class="col-md-2">
-<center><a href="portal/" class="noTd tooltip-bottom" title=""><span class="glyphicon glyphicon-user"></span> Member's Portal</center></a>
+<center><a href="<?php echo $topheader[1][1]; ?>" <?php if($topheader[1][4]==0){ echo "target='_blank'"; } ?> class="noTd tooltip-bottom" title="<?php echo $topheader[1][2]; ?>"><span class="glyphicon glyphicon-<?php echo $topheader[1][3]; ?>"></span> <?php echo $topheader[1][2]; ?></center>
 </div>
 
 <div class="col-md-2">
-<center><a href="#contact" class="noTd tooltip-bottom" title="Contact Us"><span class="glyphicon glyphicon-earphone"></span> Contact Us</center></a>
+<center><a href="<?php echo $topheader[2][1]; ?>" <?php if($topheader[2][4]==0){ echo "target='_blank'"; } ?> class="noTd tooltip-bottom" title="<?php echo $topheader[2][2]; ?>"><span class="glyphicon glyphicon-<?php echo $topheader[2][3]; ?>"></span> <?php echo $topheader[2][2]; ?></center>
 </div>
 
 <div class="col-md-2">
-<center><a href="#" class="noTd tooltip-bottom" title="Facebook"><img class="headerImg" src="images/fb.png"></a> &nbsp;
-<a href="#" class="noTd tooltip-bottom" title="Instagram"><img class="headerImg" src="images/instagram.ico"></a>&nbsp;
-<a href="#" class="noTd tooltip-bottom" title="YouTube"><img class="headerImg" src="images/youtube.png"></a>&nbsp;
-<a href="#" class="noTd tooltip-bottom" title="Twitter"><img class="headerImg" src="images/twitter.png"></a></center>
+<center><a href="<?php echo $social[0][1]; ?>" class="noTd tooltip-bottom" title="Facebook" target="_blank"><img class="headerImg" src="images/fb.png"></a> &nbsp;
+<a href="<?php echo $social[1][1]; ?>" class="noTd tooltip-bottom" title="Instagram" target="_blank"><img class="headerImg" src="images/instagram.ico"></a>&nbsp;
+<a href="<?php echo $social[2][1]; ?>" class="noTd tooltip-bottom" title="YouTube" target="_blank"><img class="headerImg" src="images/youtube.png"></a>&nbsp;
+<a href="<?php echo $social[3][1]; ?>" class="noTd tooltip-bottom" title="Twitter" target="_blank"><img class="headerImg" src="images/twitter.png"></a></center>
 </div>
 
 <div class="col-md-2">
@@ -56,7 +58,7 @@
 
 <div class="col-md-2">
 <center>
-	<span style="font-size: 15px; font-weight: bold;"><img class="rotM1e" src="banners/logo.png"/ style="width: 60px; height: 55px; margin-top:10px; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px;"> <span id="e1" style="color:<?php echo $theme[3]; ?>;"><br/><?php echo $configData[2];?></span></span>
+	<span style="font-size: 15px; font-weight: bold;"><img class="rotM1e" src="banners/<?php echo $configData[4]; ?>" style="width: 60px; height: 60px; margin-top:10px; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px;"> <span id="e1" style="color:<?php echo $theme[3]; ?>;"><br/><?php echo $configData[2];?></span></span>
 </center>
 </div>
 
@@ -98,7 +100,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php"><?php echo $configData[3]; ?></a>
+            <a class="navbar-brand" href="?home"><?php echo $configData[3]; ?></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">

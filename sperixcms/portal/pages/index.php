@@ -3,6 +3,8 @@ session_start();
 require "../../../geotechfiles/includes/functions.php";
 $app = new Enersmart();
 $app->checkLoginMember();
+$configData=$app->getConfigurationData();
+$theme=$app->getTheme();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +17,8 @@ $app->checkLoginMember();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>GGS</title>
-    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <title><?php echo $configData[3]; ?> | Portal...Welcome</title>
+    <link rel="shortcut icon" href="../../banners/<?php echo $configData[5]; ?>"/>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -85,7 +87,7 @@ $app->checkLoginMember();
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <img src="../../banners/logo.png" style="width: 50px; height: 50px; background-color: #7a1e21; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;" />
+            <img src="../../banners/logo.png" style="width: 50px; height: 50px; background-color: <?php echo $theme[2]; ?>; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;" />
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">MENU</span>
@@ -93,15 +95,15 @@ $app->checkLoginMember();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><span style="color: #7a1e21; font-weight: bold;">GHANA GEOTECHNICAL SOCIETY</span></a>
+                <a class="navbar-brand" href="index.php"><span style="color: <?php echo $theme[2]; ?>; font-weight: bold;"><?php echo $configData[2]; ?></span></a>
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right" style="color: #7a1e21;">
+            <ul class="nav navbar-top-links navbar-right" style="color: <?php echo $theme[2]; ?>;">
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #7a1e21;">
-                        <i class="fa fa-envelope fa-fw bc" style="color: #7a1e21;"></i>  <i class="fa fa-caret-down bc" style="color: #7a1e21;"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: <?php echo $theme[2]; ?>;">
+                        <i class="fa fa-envelope fa-fw bc" style="color: <?php echo $theme[2]; ?>;"></i>  <i class="fa fa-caret-down bc" style="color: <?php echo $theme[2]; ?>;"></i>
                     </a>
                     <?php 
                        // $app->getMessages();
@@ -110,7 +112,7 @@ $app->checkLoginMember();
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #7a1e21">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: <?php echo $theme[2]; ?>">
                         <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     
@@ -118,7 +120,7 @@ $app->checkLoginMember();
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #7a1e21;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: <?php echo $theme[2]; ?>;">
                         <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <?php 
@@ -128,10 +130,10 @@ $app->checkLoginMember();
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #7a1e21;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: <?php echo $theme[2]; ?>;">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user" style="color: #7a1e21;">
+                    <ul class="dropdown-menu dropdown-user" style="color: <?php echo $theme[2]; ?>;">
                         <li><a href="#settings" data-toggle="modal"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
@@ -150,7 +152,7 @@ $app->checkLoginMember();
                 </div>
 
                 <div class="row">
-                <center><span style="color: #7a1e21;">
+                <center><span style="color: <?php echo $theme[2]; ?>;">
                     <?php 
                         $result=$app->getFullDetails($_SESSION['gtmember'],'gssmembership');
                         echo $result[3];
@@ -163,10 +165,10 @@ $app->checkLoginMember();
                         <br/>
                         </li>
                         <li>
-                        <a href="?dashboard" style="color: #7a1e21;"><i class="fa fa-dashboard fa-fw" style="color: #7a1e21;"></i> Dashboard</a>
+                        <a href="?dashboard" style="color: <?php echo $theme[2]; ?>;"><i class="fa fa-dashboard fa-fw" style="color: <?php echo $theme[2]; ?>;"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="?latestnews" style="color: #7a1e21;"><i class="fa fa-envelope fa-fw" style="color: #7a1e21;"></i> Latest News</a>
+                            <a href="?latestnews" style="color: <?php echo $theme[2]; ?>;"><i class="fa fa-envelope fa-fw" style="color: <?php echo $theme[2]; ?>;"></i> Latest News</a>
                         </li>
                     </ul>
                 </div>

@@ -86,7 +86,7 @@ $configData=$geotech->getConfigurationData();
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <img src="../../banners/<?php echo $configData[4]; ?>" style="width: 50px; height: 50px; background-color: <?php echo $theme[2]; ?>; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px;" />
+            <img src="../../banners/<?php echo $configData[4]; ?>" style="width: 50px; height: 50px; background-color: <?php echo $theme[2]; ?>; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px;" />
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">MENU</span>
@@ -149,7 +149,7 @@ $configData=$geotech->getConfigurationData();
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="row">
-                    <center><img src="../images/dp.png" class="img-circle" style="width: 70px; height: 70px;" /></center>
+                    <center><img src="../../banners/<?php echo $geotech->getProfilePic($_SESSION['gtadmin']); ?>" class="img-circle" style="width: 70px; height: 70px;" /></center>
                 </div>
 
                 <div class="row">
@@ -173,6 +173,9 @@ $configData=$geotech->getConfigurationData();
                              <ul class="nav nav-second-level" style="color: <?php echo $theme[2]; ?>;">
                                  <li>
                                     <a href="?menu" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-th"></span> Menu(s)</a>
+                                </li>
+                                <li>
+                                    <a href="?topheader" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-link"></span> Header Links</a>
                                 </li>
                                  <li>
                                     <a href="?articles" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-pencil"></span> Articles</a>
@@ -206,6 +209,9 @@ $configData=$geotech->getConfigurationData();
                                 </li>
                                 <li>
                                     <a href="?gallery" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-picture"></span> Gallery</a>
+                                </li>
+                                <li>
+                                    <a href="?images" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-picture"></span> Manage Images</a>
                                 </li>
                                 <li>
                                     <a href="?downloads" style="color: <?php echo $theme[2]; ?>;"><span class="glyphicon glyphicon-download"></span> Downloads</a>

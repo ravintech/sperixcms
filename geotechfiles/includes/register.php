@@ -59,7 +59,7 @@
 		</div>
 		<div class="panel-body">
 		<?php 
-		//$this->loadAnnouncements(); 
+			$this->loadAnnouncements(); 
 		?>
 		</div>
 		</div>

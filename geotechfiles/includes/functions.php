@@ -1341,6 +1341,10 @@ function editGalleryCategory(){
 	include "gallerycategoryedit.php";
 }
 
+function editGalleryCategory2(){
+	include "gallerycategoryedit2.php";
+}
+
 function viewGalleryCategory(){
 	if(isset($_POST['deleteimg'])){
 		$imgname=$this->sanitize($_POST['deleteimg']);
@@ -1382,6 +1386,59 @@ function viewGalleryCategory(){
 					$data.="<p><center><img src='../../banners/".$row['image']."' class='img-thumbnail' style='width: 150px; height: 150px;'/></center></p>";
 					$data.="<p><center><b>".$row['description']."</b></center></p>";
 					$data.="<p><center><form method='post' action='?gallery&view'><button type='submit' style='border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px;' name='deleteimg' value='".$row['image']."' class='btn btn-danger btn-xs tooltip-bottom' title='Delete Image'><span class='glyphicon glyphicon-remove'></span> Delete Image</button></form></center></p>";
+					$data.="</div>";
+			if($count==3){ 
+				$data.="</div>";
+				$count=0;
+			}
+			$count++;
+		}
+		$data.="</div>";
+		echo $data;
+	}
+}
+
+function viewGalleryCategory2(){
+	if(isset($_POST['deleteimg'])){
+		$imgname=$this->sanitize($_POST['deleteimg']);
+		$query="delete from imageslist where image='$imgname'";
+		$result=mysql_query($query);
+		if($result){
+			//unliking image
+			unlink("../../banners/".$imgname);
+			echo "<script>
+				$('#bannerRes').html('<center><span class=\'alert alert-success\' role=\'alert\'>Image deleted from  category..</span></center><br/><br/>').fadeOut(5000);
+				window.location.assign('?images');
+				</script>";
+		}else{
+			echo "<script>
+				$('#bannerRes').html('<center><span class=\'alert alert-danger\' role=\'alert\'>Process failed..</span></center><br/><br/>').fadeOut(10000);window.location.assign('?images');
+			</script>";
+		}
+	}else{
+		$id=$this->sanitize($_POST['view']);
+		$id=intval($id);
+		$query="select category from images where id=$id";
+		$result=mysql_query($query);
+		$result=mysql_fetch_row($result);
+		$category=$result[0];
+
+		$query="select * from imageslist where category='$category'";
+		$result=mysql_query($query);
+		$numImages=mysql_num_rows($result);
+		$data="<div class='row' style='margin: 5px;'>";
+		$data.="<legend><center><span class='glyphicon glyphicon-th'></span> ".$category."</center></legend>";
+		$count=1;
+		while($row=mysql_fetch_array($result)){
+			//generating three images..
+			if($count==1){ 
+				$data.="<div class='row' style='margin: 5px;'>";
+			}
+			
+					$data.="<div class='col-md-4'>";
+					$data.="<p><center><img src='../../banners/".$row['image']."' class='img-thumbnail' style='width: 150px; height: 150px;'/></center></p>";
+					$data.="<p><center><b>".$row['description']."</b></center></p>";
+					$data.="<p><center><form method='post' action='?images&view'><button type='submit' style='border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px;' name='deleteimg' value='".$row['image']."' class='btn btn-danger btn-xs tooltip-bottom' title='Delete Image'><span class='glyphicon glyphicon-remove'></span> Delete Image</button></form></center></p>";
 					$data.="</div>";
 			if($count==3){ 
 				$data.="</div>";
@@ -1438,6 +1495,52 @@ function addImageToCategory(){
 			}
 	}
 }
+
+function addImageToCategory2(){
+	$category=$this->sanitize($_POST['category']);
+	$description=$this->sanitize2($_POST['description']);
+	if($_FILES['bannerImg']['name']==null){
+		$query="insert into imageslist(category,description,status) values('$category','$description',0)";
+		$result=mysql_query($query);
+		if($result){
+			echo "<script>
+			$('#bannerRes').html('<center><span class=\'alert alert-success\' role=\'alert\'>Image Added to category..</span></center><br/><br/>').fadeOut(5000);
+				window.location.assign('?images');
+				</script>";
+		}else{
+			echo "<script>
+				$('#bannerRes').html('<center><span class=\'alert alert-danger\' role=\'alert\'>Process failed..</span></center><br/><br/>').fadeOut(10000);
+			</script>";
+		}
+	}else{
+		//processing if image name is not null
+		//checking the validity of uploaded file..
+			$mime=explode(".", $_FILES['bannerImg']['name']);
+			$mime=$mime[1];
+			$imgname=date('Y-m-d-h-i-s').".".$mime;
+			if($mime=='jpg' || $mime=='png' || $mime=='jpeg' || $mime=='JPG' || $mime=='PNG' || $mime=='JPEG'){
+					$res=move_uploaded_file($_FILES['bannerImg']['tmp_name'], "../../banners/".$imgname);
+					if($res){
+						
+						$query="insert into imageslist(category,image,description,status) values('$category','$imgname','$description',1)";
+						mysql_query($query);
+						echo "<script>
+						$('#bannerRes').html('<center><span class=\'alert alert-success\' role=\'alert\'>Image Added to Category..</span></center><br/><br/>').fadeOut(5000);
+						window.location.assign('?images');
+					</script>";
+					}else{
+						echo "<script>
+						$('#bannerRes').html('<center><span class=\'alert alert-danger\' role=\'alert\'>Process failed..</span></center><br/><br/>').fadeOut(10000);
+					</script>";
+					}
+			}else{
+				echo "<script>
+						$('#bannerRes').html('<center><span class=\'alert alert-danger\' role=\'alert\'>Wrong file uploaded..Try again!!!</span></center><br/><br/>').fadeOut(10000);
+					</script>";
+			}
+	}
+}
+
 function updateCategory($table1,$table2,$link){
 	$oldcategoryname=$this->sanitize($_POST['oldcategoryname']);
 	$newcategoryname=$this->sanitize($_POST['newcategoryname']);
@@ -1474,6 +1577,26 @@ function updateGalleryCategory(){
 					</script>";
 	}
 }
+
+function updateGalleryCategory2(){
+	$oldcategoryname=$this->sanitize($_POST['oldcategoryname']);
+	$newcategoryname=$this->sanitize($_POST['newcategoryname']);
+	$query="update images set category='$newcategoryname' where category='$oldcategoryname'";
+	$result=mysql_query($query);
+	if($result){
+		mysql_query("update imageslist set category='$newcategoryname' where category='$oldcategoryname'");
+		echo "<script>
+						$('#bannerRes').html('<center><span class=\'alert alert-success\' role=\'alert\'>CategoryName updated..</span></center><br/><br/>').fadeOut(5000);
+						window.location.assign('?images');
+					</script>";
+	}else{
+		echo "<script>
+						$('#bannerRes').html('<center><span class=\'alert alert-danger\' role=\'alert\'>Process failed..</span></center><br/><br/>').fadeOut(10000); 
+						//window.location.assign('?images');
+					</script>";
+	}
+}
+
 function getGalleryCategoryName($id){
 	$id=$this->sanitize($id);
 	$query="select category from gallery where id=$id";
@@ -1481,6 +1604,15 @@ function getGalleryCategoryName($id){
 	$result=mysql_fetch_row($result);
 	return $result[0];
 }
+
+function getGalleryCategoryName2($id){
+	$id=$this->sanitize($id);
+	$query="select category from images where id=$id";
+	$result=mysql_query($query);
+	$result=mysql_fetch_row($result);
+	return $result[0];
+}
+
 function genGalleryCategory(){
 	$query="select category from gallery";
 	$result=mysql_query($query);
@@ -1488,6 +1620,15 @@ function genGalleryCategory(){
 		echo "<option value='".$row['category']."'>".$row['category']."</option>";
 	}
 }
+
+function genGalleryCategory2(){
+	$query="select category from images";
+	$result=mysql_query($query);
+	while($row=mysql_fetch_array($result)){
+		echo "<option value='".$row['category']."'>".$row['category']."</option>";
+	}
+}
+
 function deleteGalleryCategory(){
 	$id=$this->sanitize($_POST['delete']);
 	$id=intval($id);
@@ -1504,6 +1645,24 @@ function deleteGalleryCategory(){
 				</script>";	
 	}
 }
+
+function deleteGalleryCategory2(){
+	$id=$this->sanitize($_POST['delete']);
+	$id=intval($id);
+	$query="delete from images where id=$id";
+	$result=mysql_query($query);
+	if($result){
+		echo "<script>
+				$('#bannerRes').html('<center><span class=\'alert alert-success\' role=\'alert\'>Category deleted..</span></center><br/><br/>').fadeOut(5000);
+				window.location.assign('?images');
+				</script>";
+	}else{
+		echo "<script>
+				$('#bannerRes').html('<center><span class=\'alert alert-danger\' role=\'alert\'>Process failed..</span></center><br/><br/>').fadeOut(5000);
+				</script>";	
+	}
+}
+
 function toggleGalleryCategory(){
 	$id=$this->sanitize($_POST['toggle']);
 	$id=intval($id);
@@ -1528,6 +1687,34 @@ function toggleGalleryCategory(){
 				</script>";	
 	}
 }
+
+function toggleGalleryCategory2(){
+	$id=$this->sanitize($_POST['toggle']);
+	$id=intval($id);
+	$query="select status from images where id=$id";
+	$result=mysql_query($query);
+	$result=mysql_fetch_row($result);
+	$status=$result[0];
+	if($status==1){
+		$query="update images set status=0 where id=$id";
+	}else{
+		$query="update images set status=1 where id=$id";
+	}
+	$result=mysql_query($query);
+	if($result){
+		echo "<script>
+				$('#bannerRes').html('<center><span class=\'alert alert-success\' role=\'alert\'>Category status updated..</span></center><br/><br/>').fadeOut(5000);
+				window.location.assign('?images');
+				</script>";
+	}else{
+		echo "<script>
+				$('#bannerRes').html('<center><span class=\'alert alert-danger\' role=\'alert\'>Process failed..</span></center><br/><br/>').fadeOut(5000);
+				</script>";	
+	}
+}
+
+
+
 function addGalleryCategory(){
 	$category=$this->sanitize($_POST['category']);
 	$query="insert into gallery(category,status) values('$category',0)";
@@ -1544,6 +1731,21 @@ function addGalleryCategory(){
 	}
 }
 
+function addGalleryCategory2(){
+	$category=$this->sanitize($_POST['category']);
+	$query="insert into images(category,status) values('$category',0)";
+	$res=mysql_query($query);
+	if($res){
+		echo "<script>
+				$('#bannerRes').html('<center><span class=\'alert alert-success\' role=\'alert\'>Category Added..</span></center><br/><br/>').fadeOut(5000);
+				window.location.assign('?images');
+				</script>";
+	}else{
+		echo "<script>
+				$('#bannerRes').html('<center><span class=\'alert alert-danger\' role=\'alert\'>Process failed..</span></center><br/><br/>').fadeOut(5000);
+				</script>";
+	}
+}
 
 function loadGalleryCategory(){
 	$query="select * from gallery order by status desc";
@@ -1567,6 +1769,39 @@ function loadGalleryCategory(){
 		}
 		$view="<center><form method='post' action='?gallery&view' class='form'><button name='view' type='submit' value='".$row['id']."' class='btn btn-xs btn-primary tooltip-bottom' title='View Gallery' style='border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; background-color: #035888;' ".$allow."><span class='glyphicon glyphicon-eye-open'></span></button></form></center>";
 		$edit="<center><form method='post' action='?gallery&edit' class='form'><button name='edit' type='submit' value='".$row['id']."' class='btn btn-xs btn-info tooltip-bottom' title='Edit' style='border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;'><span class='glyphicon glyphicon-pencil'></span></button></form></center>";
+		$delete="<center><form method='post' action='#' class='form'><button name='delete' type='submit' value='".$row['id']."' class='btn btn-xs btn-danger tooltip-bottom' title='Delete' style='border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;'><span class='glyphicon glyphicon-remove'></span></button></form></center>";
+
+		$data.="<tr><td><center>".$count."</center></td><td>".$row['category']."</td><td>".$status."</td><td>".$view."</td><td>".$edit."</td><td>".$delete."</td></tr>";
+		$count++;
+	}
+	$data.="</tbody>";
+	$data.="</table>";
+	echo $data;
+}
+
+
+function loadGalleryCategory2(){
+	$query="select * from images order by status desc";
+	$result=mysql_query($query);
+	$data="<table class='table table-hover table-bordered' id='bannerList'>";
+	$data.="<thead><tr><th><center>ID</center></th><th><center>Category</center></th><th><center>Status</center></th><th><center><span class='glyphicon glyphicon-eye-open'></span></center></th><th><center><span class='glyphicon glyphicon-pencil'></span></center></th><th><center><span class='glyphicon glyphicon-remove'></span></center></th></tr></thead>";
+	$data.="<tbody>";
+	$count=1;
+	while($row=mysql_fetch_array($result)){
+		$query2="select * from imageslist where category='{$row['category']}'";
+		$result2=mysql_query($query2);
+		if(mysql_num_rows($result2) <1){
+			$allow="disabled";
+		}else{
+			$allow="";
+		}
+		if($row['status']==1){
+			$status="<center><form method='post' action='#' class='form'><button name='toggle' type='submit' value='".$row['id']."' class='btn btn-xs btn-success tooltip-bottom' title='Click to toggle status' style='border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;'><span class='glyphicon glyphicon-ok'></span></button></form></center>";
+		}else{
+			$status="<center><form method='post' action='#' class='form'><button name='toggle' type='submit' value='".$row['id']."' class='btn btn-xs btn-warning tooltip-bottom' title='Click to toggle status' style='border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;'><span class='glyphicon glyphicon-off'></span></button></form></center>";
+		}
+		$view="<center><form method='post' action='?images&view' class='form'><button name='view' type='submit' value='".$row['id']."' class='btn btn-xs btn-primary tooltip-bottom' title='View images' style='border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; background-color: #035888;' ".$allow."><span class='glyphicon glyphicon-eye-open'></span></button></form></center>";
+		$edit="<center><form method='post' action='?images&edit' class='form'><button name='edit' type='submit' value='".$row['id']."' class='btn btn-xs btn-info tooltip-bottom' title='Edit' style='border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;'><span class='glyphicon glyphicon-pencil'></span></button></form></center>";
 		$delete="<center><form method='post' action='#' class='form'><button name='delete' type='submit' value='".$row['id']."' class='btn btn-xs btn-danger tooltip-bottom' title='Delete' style='border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;'><span class='glyphicon glyphicon-remove'></span></button></form></center>";
 
 		$data.="<tr><td><center>".$count."</center></td><td>".$row['category']."</td><td>".$status."</td><td>".$view."</td><td>".$edit."</td><td>".$delete."</td></tr>";
@@ -3442,8 +3677,8 @@ function editFeaturedNews1(){
 		} 
 </script>
 				<div class='row' style='margin: 2px;'>
-					<div class='col-md-6'>
-					<form method='post' action='?happenings' class='form'>
+					<center>
+					<form method='post' action='?happenings' class='form well' style='width: 40%;'>
 						<div class='form-group'>
 							<label for='topic'>Topic:</label>
 							<input type='text' name='topic' id='topic' class='form-control' placeholder='Topic'/ required value='".$result[1]."'>
@@ -3451,20 +3686,14 @@ function editFeaturedNews1(){
 						</div>
 						<div class='form-group'>
 							<label for='source'>Source:</label>
-							<textarea class='form-control' name='source' onkeyup='updateView(this.value)' id='source' required>".$result[2]."</textarea>
+							<input type='text' value='".$result[2]."' placeholder='eg. http://spiderapps.net/' class='form-control' name='source' onkeyup='updateView(this.value)' id='source' required/>
 						</div>
 						<div class='form-group'>
 							<center><button type='submit' name='updateFNBtn' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-plus'></span> Update Featured News</button>&nbsp;&nbsp;&nbsp;<a href='?happenings' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span> Close</a></center>
 						</div>
 					</form>
 					</div>
-					<div class='col-md-6'>
-						
-						<div class='form-group'>
-							<div class='row' id='addFNView' style='margin: 5px;'>".$result[2]."</div>
-						</div>
-						<p><center><span class='glyphicon glyphicon-eye-open'></span> Preview</center></p>
-					</div>
+					</center>
 				</div>
 			";
 }
@@ -3512,6 +3741,15 @@ function updateFeaturedNews(){
 	echo "<script>	
 			window.location.assign('?featurednews');
 		</script>";
+}
+
+//get rss source link
+function getRssSourceLink($tablename){
+	$table=$this->sanitize($tablename);
+	$query="select source from $table limit 1";
+	$result=mysql_query($query);
+	$result=mysql_fetch_row($result);
+	return $result[0];
 }
 
 //add featuredNews
@@ -3564,8 +3802,8 @@ function editFeaturedNews(){
 		} 
 </script>
 				<div class='row' style='margin: 2px;'>
-					<div class='col-md-6'>
-					<form method='post' action='?featurednews' class='form'>
+					<center>
+					<form method='post' action='?featurednews' class='form well' style='width: 40%;'>
 						<div class='form-group'>
 							<label for='topic'>Topic:</label>
 							<input type='text' name='topic' id='topic' class='form-control' placeholder='Topic'/ required value='".$result[1]."'>
@@ -3573,20 +3811,14 @@ function editFeaturedNews(){
 						</div>
 						<div class='form-group'>
 							<label for='source'>Source:</label>
-							<textarea class='form-control' name='source' onkeyup='updateView(this.value)' id='source' required>".$result[2]."</textarea>
+							<input type='text' class='form-control' name='source' onkeyup='updateView(this.value)' id='source' placeholder='eg. http://spiderapps.net/' value='".$result[2]."' required/>
 						</div>
 						<div class='form-group'>
 							<center><button type='submit' name='updateFNBtn' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-plus'></span> Update Featured News</button>&nbsp;&nbsp;&nbsp;<a href='?featurednews' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span> Close</a></center>
 						</div>
 					</form>
 					</div>
-					<div class='col-md-6'>
-						
-						<div class='form-group'>
-							<div class='row' id='addFNView' style='margin: 5px;'>".$result[2]."</div>
-						</div>
-						<p><center><span class='glyphicon glyphicon-eye-open'></span> Preview</center></p>
-					</div>
+					</center>
 				</div>
 			";
 }
@@ -4098,9 +4330,10 @@ function getChatList(){
 
 	while($row=mysql_fetch_array($result)){
 		if($count%2==0){
+			$dp=$this->getProfilePic($row['username']);
 			$data.="<li class='left clearfix'>";
 			$data.="<span class='chat-img pull-left'>";
-			$data.="<img src='../images/dp.png' style='height: 50px; width: 50px;' class='img-circle'>";
+			$data.="<img src='../../banners/".$dp."' style='height: 50px; width: 50px;' class='img-circle'>";
 			$data.="</span>";
 			$data.="<div class='chat-body clearfix'>";
 			$data.="<div class='header'>";
@@ -4112,9 +4345,10 @@ function getChatList(){
 			$data.="</div></li>";
 
 		}else{
+			$dp=$this->getProfilePic($row['username']);
 			$data.="<li class='right clearfix'>";
 			$data.="<span class='chat-img pull-right'>";
-			$data.="<img src='../images/dp.png' style='height: 50px; width: 50px;' class='img-circle'>";
+			$data.="<img src='../../banners/".$dp."' style='height: 50px; width: 50px;' class='img-circle'>";
 			$data.="</span>";
 			$data.="<div class='chat-body clearfix'>";
 			$data.="<div class='header'>";
@@ -4187,7 +4421,7 @@ function loadAnnouncements(){
 	$result=mysql_query($query);
 	$data=null;
 	while($row=mysql_fetch_array($result)){
-	$data.="<div class='row'>";
+	$data.="<div class='row well' style='background-color: #fff; border-radius: 25px; -webkit-border-radius: 25px; -moz-border-radius: 25px;'>";
 	$data.="<p style='border: 1px dashed ".$theme[2]."; padding: 5px;'>";
 	$data.="<b>".$row['title']."</b><br/>";
 	$data.=$row['message']."<br/>";
@@ -4196,6 +4430,18 @@ function loadAnnouncements(){
 	}
 	
 	echo $data;
+}
+
+function getProfilePic($username){
+	$username=$this->sanitize($username);
+	$query="select image from dp where username='$username' limit 1";
+	$result=mysql_query($query);
+	$result=mysql_fetch_row($result);
+	if($result[0]==null || $result[0]==" "){
+		return "dp.png";
+	}else{
+		return $result[0];
+	}
 }
 
 function getFullDetails($username,$table){
@@ -4315,6 +4561,8 @@ function loadContentAdmin(){
 		include "newsadmin.php";
 	}elseif(isset($_GET['gallery'])){
 		include "galleryadmin.php";
+	}elseif(isset($_GET['images'])){
+		include "manageimages.php";
 	}elseif(isset($_GET['videos'])){
 		include "videosadmin.php";
 	}elseif(isset($_GET['downloads'])){
@@ -4329,6 +4577,8 @@ function loadContentAdmin(){
 		include "articles.php";
 	}elseif(isset($_GET['configuration'])){
 		include "configuration.php";
+	}elseif(isset($_GET['topheader'])){
+		include "topheader.php";
 	}else{
 		include "dashboard.php";
 	}
@@ -4479,13 +4729,15 @@ function loadSpotlight(){
 	$query="select * from spotlight where status=1";
 	$result=mysql_query($query);
 	while ($row=mysql_fetch_array($result)) {
+		echo "<div class='row well' style='background-color: #fff; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px;'>";
 		if($row['image']!=null){ 
 		echo "<center><p><img src='banners/".$row['image']."' style='width: 70px; height: 70px'/></p></center>";
 		}
-		echo "<p style='font-weight: 100; border: 1px dashed ".$theme[2]."; color: #909057; font-weight: bold;' class='row well'>".$row['message']."</p>";
+		echo "<p style='font-weight: 100; padding: 5px; border: 1px dashed ".$theme[2]."; color: #909057; font-weight: bold;' class='row'>".$row['message']."</p>";
 		if($row['link']!=null){
 		echo "<p><center><a href='".$row['link']."' class='btn btn-xs btn-success blink' style='background-color: #ca9a1c; color: #fff; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; border: 1px solid ".$theme[2]."; font-weight: bold;'><span class='glyphicon glyphicon-pecil'></span> ".$row['linkMsg']."</a></center></p>";
 		}
+		echo "</div>";
 	}
 }
 
@@ -4744,12 +4996,12 @@ function loadCalendar(){
 	$result=mysql_query($query);
 	$data=null;
 	while($row=mysql_fetch_array($result)){
-	$data.="<div class='row'>";
+	$data.="<div class='row well' style='background-color: #fff; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px;'>";
 	$data.="<a href='".$row['link']."' style='text-decoration: none;color: #000;'><p style='border: 1px dashed ".$theme[2]."; padding: 5px;'>";
 	$data.="<span class='glyphicon glyphicon-envelope'></span> <b>".$row['title']."</b><br/><span class='glyphicon glyphicon-time'></span> ";
 	$data.=$row['date']."<br/>";
 	$data.="</p></a>";
-	$data.="</row>";
+	$data.="</div>";
 	}
 	
 	echo $data;
@@ -4776,8 +5028,33 @@ function updateAdminProfile($username,$fullname,$email,$mobileNo){
 	$fullname=$this->sanitize($fullname);
 	$email=$this->sanitize($email);
 	$mobileNo=$this->sanitize($mobileNo);
+	
+
+	//checking if dp has been uploaded..
+	$accepted=['png','PNG','jpg','jpeg','JPG','JPEG'];
+	if(is_uploaded_file($_FILES['profilePic']['tmp_name']) && $_FILES['profilePic']['name'] !=null){
+		//getting file extension
+		$ext=explode(".",$_FILES['profilePic']['name']);
+		$ext=end($ext);
+		if(in_array($ext, $accepted)){
+			//unlinking previous file
+			$query="select image from dp where username='$username' limit 1";
+			$result=mysql_query($query);
+			$result=mysql_fetch_row($result);
+			unlink("../../banners/".$result[0]);
+
+			//uploading new logo
+			$cDate=date("Y-m-d-h-i-s");
+			move_uploaded_file($_FILES['profilePic']['tmp_name'], "../../banners/".$cDate.".".$ext);
+			$newlogo="logo.".$ext;
+			$query="update dp set image='$newlogo' where username='$username'";
+			mysql_query($query);
+			//done uploading logo
+		}
+	}
 	$query="update admin set fullname='$fullname',email='$email',mobileNo='$mobileNo' where username='$username'";
 	$result=mysql_query($query);
+
 	if($result==1){
 								echo "<script>
 								$('#profileEditRes').html('<center><span class=\'alert alert-success\' role=\'alert\'> Profile Updated successfully!!!</span></center>').fadeOut(5000);
@@ -4945,7 +5222,165 @@ function genThemeList(){
 //updating configuration data
 function updateConfigurationData(){
 	//post parameters
+	$sitename=$this->sanitize($_POST['sitename']);
+	$shortname=$this->sanitize($_POST['siteshort']);
+	$siteurl=$this->sanitize($_POST['siteurl']);
+	$marquee=$this->sanitize($_POST['marquee']);
+	$theme=$this->sanitize($_POST['theme']);
+
+	//updating theme
+	$query="update theme set status=0";
+	mysql_query($query);
+	$query="update theme set status=1 where id=$theme";
+	mysql_query($query);
+	//end of theme update
+
+
+	//updating configuration data//
+	$query="update configuration set marquee='$marquee', sitename='$sitename', siteshort='$shortname', siteurl='$siteurl'";
+	mysql_query($query);
+	//end of updating configuration data//
+
+	//working on logo
+	$accepted=['png','PNG','jpg','jpeg','JPG','JPEG'];
+	if(is_uploaded_file($_FILES['logo']['tmp_name']) && $_FILES['logo']['name'] !=null){
+		//getting file extension
+		$ext=explode(".",$_FILES['logo']['name']);
+		$ext=end($ext);
+		if(in_array($ext, $accepted)){
+			//unlinking previous file
+			$query="select logo from configuration limit 1";
+			$result=mysql_query($query);
+			$result=mysql_fetch_row($result);
+			unlink("../../banners/".$result[0]);
+
+			//uploading new logo
+			move_uploaded_file($_FILES['logo']['tmp_name'], "../../banners/logo.".$ext);
+			$newlogo="logo.".$ext;
+			$query="update configuration set logo='$newlogo'";
+			mysql_query($query);
+			//done uploading logo
+		}
+	}
+	//end of logo
+
+	//favicon
+	$accepted=['ico','ICO'];
+	if(is_uploaded_file($_FILES['favicon']['tmp_name']) && $_FILES['favicon']['name'] !=null){
+		//getting file extension
+		$ext=explode(".",$_FILES['favicon']['name']);
+		$ext=end($ext);
+		if(in_array($ext, $accepted)){
+			//unlinking previous file
+			$query="select favicon from configuration limit 1";
+			$result=mysql_query($query);
+			$result=mysql_fetch_row($result);
+			unlink("../../banners/".$result[0]);
+
+			//uploading new logo
+			move_uploaded_file($_FILES['favicon']['tmp_name'], "../../banners/favicon.".$ext);
+			$newlogo="favicon.".$ext;
+			$query="update configuration set favicon='$newlogo'";
+			mysql_query($query);
+			//done uploading logo
+		}
+	}
+	//end of favicon
+
+	echo "<script>
+			$('#bannerRes').html('<center><span class=\'alert alert-sm alert-success\' role=\'alert\'>Configuration updated.</span></center>');
+			window.location.assign('?configuration')
+			</script>";
 	
+}
+
+//getting topheader
+function getTopHeaderConfig(){
+	$data=[];
+	$query="select * from topheader order by id";
+	$result=mysql_query($query);
+	$count=0;
+	while($row=mysql_fetch_array($result)){
+		//parameters acquired
+		$data[$count][0]=$row['id'];
+		$data[$count][1]=$row['link'];
+		$data[$count][2]=$row['title'];
+		$data[$count][3]=$row['glyphicon'];
+		$data[$count][4]=$row['display'];
+		$count++;
+	}
+	return $data;
+}
+
+
+//getting social links
+function getSocialLinks(){
+	$data=[];
+	$query="select * from sociallinks";
+	$result=mysql_query($query);
+	$count=0;
+	while($row=mysql_fetch_array($result)){
+		//parameters acquired
+		$data[$count][0]=$row['id'];
+		$data[$count][1]=$row['link'];
+		$data[$count][2]=$row['title'];
+		$count++;
+	}
+	return $data;
+}
+
+//updating topheader config
+function updateTopHeader(){
+	//acquired parameters
+	
+	
+		$link1=$this->sanitize($_POST['link1']);
+		$title1=$this->sanitize($_POST['title1']);
+		$glyphicon1=$this->sanitize($_POST['glyphicon1']);
+		$display1=$this->sanitize($_POST['display1']);
+
+		$link2=$this->sanitize($_POST['link2']);
+		$title2=$this->sanitize($_POST['title2']);
+		$glyphicon2=$this->sanitize($_POST['glyphicon2']);
+		$display2=$this->sanitize($_POST['display2']);
+
+		$link3=$this->sanitize($_POST['link3']);
+		$title3=$this->sanitize($_POST['title3']);
+		$glyphicon3=$this->sanitize($_POST['glyphicon3']);
+		$display3=$this->sanitize($_POST['display3']);
+
+		$facebook=$this->sanitize($_POST['facebook']);
+		$instagram=$this->sanitize($_POST['instagram']);
+		$youtube=$this->sanitize($_POST['youtube']);
+		$twitter=$this->sanitize($_POST['twitter']);
+
+
+		$ids=['section1','section2','section3'];
+		$this->updateth1($ids[0],$link1,$title1,$glyphicon1,$display1);
+		$this->updateth1($ids[1],$link2,$title2,$glyphicon2,$display2);
+		$this->updateth1($ids[2],$link3,$title3,$glyphicon3,$display3);
+
+		$social=['facebook','instagram','youtube','twitter'];
+		$this->updateth2($social[0],$facebook);
+		$this->updateth2($social[1],$instagram);
+		$this->updateth2($social[2],$youtube);
+		$this->updateth2($social[3],$twitter);
+		
+	echo "<script>
+			$('#bannerRes').html('<center><span class=\'alert alert-sm alert-success\' role=\'alert\'>Top Header Links updated.</span></center>');
+			window.location.assign('?topheader');
+			</script>";
+
+}
+
+function updateth1($id,$link,$title,$glyphicon,$display){
+	$query="update topheader set link='$link',title='$title',glyphicon='$glyphicon',display=$display where id='$id'";
+	mysql_query($query);
+}
+
+function updateth2($id,$link){
+	$query="update sociallinks set link='$link' where id='$id'";
+	mysql_query($query);
 }
 //#########################################################..ADMIN....
 

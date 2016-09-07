@@ -25,7 +25,11 @@ $info=$this->getFullDetails($_SESSION['gtadmin'],"admin");
 					}
 				?>
 				</div>
-				<form method="post" action="#" class="form">
+				<form method="post" action="#" class="form" enctype="multipart/form-data">
+					<div class="form-group">
+						<label for="profilePic"><span class="glyphicon glyphicon-picture"></span> Profile Picture:</label>
+						<input type="file" name="profilePic" class="form-control"/>
+					</div>
 					<div class="form-group">
 						<label for="fullname"><span class="glyphicon glyphicon-user"></span> Full Name:</label>
 						<input type="text" name="fullname" class="form-control" value="<?php echo $info[0]; ?>" autofocus required/>

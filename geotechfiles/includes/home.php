@@ -64,7 +64,8 @@
 </div>
 <div class="panel-body">
 <?php 
-	$this->previewFeaturedNews();
+	//$this->previewFeaturedNews();
+	include "rssfeed.php"; 
 ?>
 </div>
 </div>
@@ -77,7 +78,8 @@
 </div>
 <div class="panel-body">
 <?php 
-	$this->previewHappenings();
+	//$this->previewHappenings();
+	include "rssfeed1.php";
 ?>
 </div>
 </div>
