@@ -367,7 +367,7 @@ function genMenuAdmin(){
 		}
 		$disabled=" ";
 		if($row['mydef']==1){
-			$disabled="disabled";
+			$disabled=" ";
 		}
 		$data.="<div class='panel panel-default' style='border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px;'>
       <div class='panel-heading' style='background-color: #fff; color: #035888; font-weight: bold;border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px;'>
@@ -796,9 +796,9 @@ function previewWorld(){
 	$result=mysql_fetch_row($result);
 	$data="<div class='row' style='margin: 2px;'>";
 	$data.="<div class='col-md-5'>";
-	$data.="<iframe width='200px' height='150px' src='".$result[2]."' frameborder='0' clas='img-thumbnail' allowfullscreen></iframe>";
+	$data.="<iframe width='190px' height='150px' src='".$result[2]."' frameborder='0' clas='img-thumbnail' allowfullscreen></iframe>";
 	$data.="</div>";
-	$data.="<div class='col-md-1'></div>";
+	$data.="<div class='col-md-1'>&nbsp;&nbsp;</div>";
 	$data.="<div class='col-md-6'>";
 	$data.="<p><a href='".$result[4]."' style='text-decoration: none; color: #000;'>".$result[3]."</a></p>";
 	$data.="</div>";
@@ -811,10 +811,10 @@ function previewLatestPhotos(){
 	$result=mysql_query($query);
 	$result=mysql_fetch_row($result);
 	$data="<div class='row' style='margin: 2px;'>";
-	$data.="<div class='col-md-4'>";
+	$data.="<div class='col-md-5'>";
 	$data.="<img src='banners/".$result[2]."' class='img-thumbnail' style='width: 150px; height: 150px;'/>";
 	$data.="</div>";
-	$data.="<div class='col-md-8'>";
+	$data.="<div class='col-md-7'>";
 	$data.="<p><a href='".$result[4]."' style='text-decoration: none; color: #000;'>".$result[3]."</a></p>";
 	$data.="</div>";
 	$data.="</div>";
@@ -4402,7 +4402,7 @@ function updateLastLogin($username){
 function getLastLogin($username){
 	$query="select * from lastlogin where username='$username' order by date desc";
 	$result=mysql_query($query);
-	$data=[];
+	$data=array();
 	$count=0;
 	while($row=mysql_fetch_array($result)){
 		if($count==2){
@@ -4426,7 +4426,7 @@ function loadAnnouncements(){
 	$data.="<b>".$row['title']."</b><br/>";
 	$data.=$row['message']."<br/>";
 	$data.="</p>";
-	$data.="</row>";
+	$data.="</div>";
 	}
 	
 	echo $data;
@@ -5296,7 +5296,7 @@ function updateConfigurationData(){
 
 //getting topheader
 function getTopHeaderConfig(){
-	$data=[];
+	$data=array();
 	$query="select * from topheader order by id";
 	$result=mysql_query($query);
 	$count=0;
@@ -5315,7 +5315,7 @@ function getTopHeaderConfig(){
 
 //getting social links
 function getSocialLinks(){
-	$data=[];
+	$data=array();
 	$query="select * from sociallinks";
 	$result=mysql_query($query);
 	$count=0;
